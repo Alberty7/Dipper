@@ -1,4 +1,4 @@
-﻿`using System;
+﻿using System;
 
 public class Viewer
 {
@@ -11,5 +11,6 @@ public class Viewer
 
 public class Redactor: Viewer
 {
+
     /*Redactor может изменять рассписание (создавать, удалять, редактировать), так же, просматривать его, фильтровать, распечатать*/
 }
