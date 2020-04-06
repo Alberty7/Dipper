@@ -1,0 +1,10 @@
+C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\bin\Debug\Dipper.exe.config
+C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\bin\Debug\Dipper.exe
+C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\bin\Debug\Dipper.pdb
+C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\Dipper.csprojAssemblyReference.cache
+C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\Dipper.Properties.Resources.resources
+C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\Dipper.csproj.GenerateResource.cache
+C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\Dipper.csproj.CoreCompileInputs.cache
+C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\Dipper.exe
+C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\Dipper.pdb
+C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\Dipper.Dipper.resources
