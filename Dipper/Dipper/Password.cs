@@ -13,6 +13,7 @@ namespace Dipper
 {
     public partial class Password : Form
     {
+        public bool notInPasswords = false;
         private List<string> passwords;
         public List<string> Passwords { get => passwords; }
         public bool isSuccsessful = false;
@@ -27,7 +28,7 @@ namespace Dipper
         {
             passwords = new List<string>();
             StreamReader streamReader = new StreamReader("./passwords.txt");
-            for(string item = "admin"; !streamReader.EndOfStream; item = streamReader.ReadLine())
+            for (string item = "admin"; !streamReader.EndOfStream; item = streamReader.ReadLine())
             {
                 passwords.Add(item);
             }
@@ -37,14 +38,14 @@ namespace Dipper
         {
             string NotAllowed = @" ,.(){ }[] /\| !@#$%^&*+=";
             bool contains = false;
-            foreach(char item in textBox1.Text)
+            foreach (char item in textBox1.Text)
             {
                 contains = NotAllowed.Contains(item);
             }
-            if(contains == true)
+            if (contains == true)
             {
                 button1.Enabled = false;
-                label2.Text = "Пароль содержит запрещенные символы";
+                label2.Text = "Пароль содержит недопустимые символы";
             }
             else
             {
@@ -55,13 +56,25 @@ namespace Dipper
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach(string psw in Passwords)
+            foreach (string psw in Passwords)
             {
-                if(textBox1.Text == psw){
+                if (textBox1.Text == psw)
+                {
                     isSuccsessful = true;
-                    Close();
+                    notInPasswords = false;
                 }
-            }
+                else
+                {
+                    notInPasswords = true;
+                }
+            }            
+            Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+            Close();
         }
     }
 }

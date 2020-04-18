@@ -35,9 +35,21 @@ namespace Dipper
 			{
 				dialog.Owner = this;
 				dialog.ShowDialog();
-				Logined = dialog.isSuccsessful;
+				if (dialog.isSuccsessful) 
+				{
+					Enter.Hide();
+					Logined = dialog.isSuccsessful;
+					MessageBox.Show("Вход выполнен успешно!");
+				}
+
+				else if (dialog.notInPasswords)
+				{
+
+					MessageBox.Show("Ошибка, неверный пароль!");
+				}
 			}
 		}
+
 
 		private void выходToolStripMenuItem_Click(object sender, EventArgs e)
 		{
