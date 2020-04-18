@@ -9,8 +9,22 @@ public class Viewer
     }
 }
 
-public class Redactor: Viewer
+public class Redactor : Viewer
 {
-
     /*Redactor может изменять рассписание (создавать, удалять, редактировать), так же, просматривать его, фильтровать, распечатать*/
+    private string password;
+
+    public string Password
+    {
+        private set
+        {
+            
+        }
+
+    }
+
+    public Redactor (string psw):base() 
+    {
+        Password = psw;
+    }
 }
