@@ -8,3 +8,14 @@ C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\D
 C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\Dipper.exe
 C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\Dipper.pdb
 C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\Dipper.Dipper.resources
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\Dipper.exe.config
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\Dipper.exe
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\Dipper.pdb
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.csprojAssemblyReference.cache
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.Dipper.resources
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.Password.resources
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.Properties.Resources.resources
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.csproj.GenerateResource.cache
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.csproj.CoreCompileInputs.cache
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.exe
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.pdb

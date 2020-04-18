@@ -13,7 +13,7 @@ namespace Dipper
 
 	public partial class Dipper : Form
 	{
-		private bool Logined;
+		private bool Logined = false;
 		public Dipper()
 		{
 			InitializeComponent();
@@ -31,7 +31,12 @@ namespace Dipper
 
 		private void Enter_Click(object sender, EventArgs e)
 		{
-			
+			using (Password dialog = new Password())
+			{
+				dialog.Owner = this;
+				dialog.ShowDialog();
+				Logined = dialog.isSuccsessful;
+			}
 		}
 
 		private void выходToolStripMenuItem_Click(object sender, EventArgs e)
