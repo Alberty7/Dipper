@@ -1,4 +1,4 @@
-﻿namespace Dipper
+﻿namespace TimeTable
 {
     partial class AddLessonForm
     {
@@ -59,8 +59,8 @@
 			this.FatherName.Name = "FatherName";
 			this.FatherName.Size = new System.Drawing.Size(100, 20);
 			this.FatherName.TabIndex = 2;
-			this.FatherName.Text = "Отчество";
-			this.FatherName.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+			this.FatherName.Enter += new System.EventHandler(this.FatherName_Enter);
+			this.FatherName.Leave += new System.EventHandler(this.FatherName_Leave);
 			// 
 			// FirstName
 			// 
@@ -69,8 +69,8 @@
 			this.FirstName.Name = "FirstName";
 			this.FirstName.Size = new System.Drawing.Size(100, 20);
 			this.FirstName.TabIndex = 1;
-			this.FirstName.Text = "Имя";
-			this.FirstName.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+			this.FirstName.Enter += new System.EventHandler(this.FirstName_Enter);
+			this.FirstName.Leave += new System.EventHandler(this.FirstName_Leave);
 			// 
 			// LastName
 			// 
@@ -79,8 +79,8 @@
 			this.LastName.Name = "LastName";
 			this.LastName.Size = new System.Drawing.Size(100, 20);
 			this.LastName.TabIndex = 0;
-			this.LastName.Text = "Фамилия";
-			this.LastName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+			this.LastName.Enter += new System.EventHandler(this.LastName_Enter);
+			this.LastName.Leave += new System.EventHandler(this.LastName_Leave);
 			// 
 			// OK
 			// 
@@ -99,8 +99,8 @@
 			this.SubjectName.Name = "SubjectName";
 			this.SubjectName.Size = new System.Drawing.Size(100, 20);
 			this.SubjectName.TabIndex = 7;
-			this.SubjectName.Text = "Предмет";
-			this.SubjectName.TextChanged += new System.EventHandler(this.SubjectName_TextChanged);
+			this.SubjectName.Enter += new System.EventHandler(this.SubjectName_Enter);
+			this.SubjectName.Leave += new System.EventHandler(this.SubjectName_Leave);
 			// 
 			// AcademicHours
 			// 

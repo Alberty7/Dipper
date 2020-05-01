@@ -1,4 +1,6 @@
-﻿namespace Dipper
+﻿using System.ComponentModel;
+
+namespace TimeTable
 {
     partial class Dipper
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+			this.components = new System.ComponentModel.Container();
 			this.Menu = new System.Windows.Forms.MenuStrip();
 			this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.создатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,19 +56,26 @@
 			this.AddLesson = new System.Windows.Forms.ToolStripButton();
 			this.Tables = new System.Windows.Forms.TabControl();
 			this.Table1 = new System.Windows.Forms.TabPage();
+			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.Pull = new System.Windows.Forms.ListView();
+			this.listBox1 = new System.Windows.Forms.ListBox();
+			this.lessonsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.dipperDBDataSet = new TimeTable.DipperDBDataSet();
+			this.treeView1 = new System.Windows.Forms.TreeView();
+			this.lessonsTableAdapter = new TimeTable.DipperDBDataSetTableAdapters.LessonsTableAdapter();
 			this.Menu.SuspendLayout();
 			this.ToolBar.SuspendLayout();
 			this.Tables.SuspendLayout();
 			this.Table1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.lessonsBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dipperDBDataSet)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// Menu
@@ -75,7 +85,7 @@
             this.справкаToolStripMenuItem});
 			this.Menu.Location = new System.Drawing.Point(0, 0);
 			this.Menu.Name = "Menu";
-			this.Menu.Size = new System.Drawing.Size(708, 24);
+			this.Menu.Size = new System.Drawing.Size(875, 24);
 			this.Menu.TabIndex = 0;
 			this.Menu.Text = "menuStrip1";
 			// 
@@ -139,7 +149,7 @@
 			this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
 			this.выходToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
 			this.выходToolStripMenuItem.Text = "Выход";
-			this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
+			this.выходToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
 			// 
 			// справкаToolStripMenuItem
 			// 
@@ -149,7 +159,6 @@
 			this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
 			this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
 			this.справкаToolStripMenuItem.Text = "Справка";
-			this.справкаToolStripMenuItem.Click += new System.EventHandler(this.справкаToolStripMenuItem_Click);
 			// 
 			// показатьToolStripMenuItem
 			// 
@@ -166,7 +175,7 @@
 			// Enter
 			// 
 			this.Enter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.Enter.Location = new System.Drawing.Point(629, 1);
+			this.Enter.Location = new System.Drawing.Point(796, 1);
 			this.Enter.Name = "Enter";
 			this.Enter.Size = new System.Drawing.Size(75, 23);
 			this.Enter.TabIndex = 1;
@@ -187,13 +196,13 @@
             this.AddLesson});
 			this.ToolBar.Location = new System.Drawing.Point(0, 24);
 			this.ToolBar.Name = "ToolBar";
-			this.ToolBar.Size = new System.Drawing.Size(708, 25);
+			this.ToolBar.Size = new System.Drawing.Size(875, 25);
 			this.ToolBar.TabIndex = 2;
 			this.ToolBar.Text = "toolStrip1";
 			// 
 			// Create
 			// 
-			this.Create.BackgroundImage = global::Dipper.Properties.Resources._create_new_folder_90671;
+			this.Create.BackgroundImage = global::TimeTable.Properties.Resources._create_new_folder_90671;
 			this.Create.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.Create.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.Create.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -208,7 +217,7 @@
 			// 
 			// Open
 			// 
-			this.Open.BackgroundImage = global::Dipper.Properties.Resources.folder_black_open_shape_icon_icons_com_56988;
+			this.Open.BackgroundImage = global::TimeTable.Properties.Resources.folder_black_open_shape_icon_icons_com_56988;
 			this.Open.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.Open.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.Open.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -223,7 +232,7 @@
 			// 
 			// Sort
 			// 
-			this.Sort.BackgroundImage = global::Dipper.Properties.Resources.filter_filters_funnel_list_navigation_sort_sorting_icon_123212;
+			this.Sort.BackgroundImage = global::TimeTable.Properties.Resources.filter_filters_funnel_list_navigation_sort_sorting_icon_123212;
 			this.Sort.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.Sort.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.Sort.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -240,6 +249,7 @@
 			this.Search.Font = new System.Drawing.Font("Segoe UI", 9F);
 			this.Search.Name = "Search";
 			this.Search.Size = new System.Drawing.Size(100, 25);
+			this.Search.Click += new System.EventHandler(this.Search_Click);
 			// 
 			// toolStripSeparator5
 			// 
@@ -248,7 +258,7 @@
 			// 
 			// AddLesson
 			// 
-			this.AddLesson.BackgroundImage = global::Dipper.Properties.Resources.add_circle_create_expand_new_plus_icon_123218;
+			this.AddLesson.BackgroundImage = global::TimeTable.Properties.Resources.add_circle_create_expand_new_plus_icon_123218;
 			this.AddLesson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 			this.AddLesson.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
 			this.AddLesson.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -260,11 +270,12 @@
 			// Tables
 			// 
 			this.Tables.Controls.Add(this.Table1);
+			this.Tables.Controls.Add(this.tabPage1);
 			this.Tables.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.Tables.Location = new System.Drawing.Point(0, 0);
 			this.Tables.Name = "Tables";
 			this.Tables.SelectedIndex = 0;
-			this.Tables.Size = new System.Drawing.Size(544, 430);
+			this.Tables.Size = new System.Drawing.Size(674, 430);
 			this.Tables.TabIndex = 3;
 			// 
 			// Table1
@@ -273,16 +284,35 @@
 			this.Table1.Location = new System.Drawing.Point(4, 22);
 			this.Table1.Name = "Table1";
 			this.Table1.Padding = new System.Windows.Forms.Padding(3);
-			this.Table1.Size = new System.Drawing.Size(536, 404);
+			this.Table1.Size = new System.Drawing.Size(666, 404);
 			this.Table1.TabIndex = 0;
 			this.Table1.Text = "tabPage1";
 			this.Table1.UseVisualStyleBackColor = true;
+			// 
+			// dataGridView1
+			// 
+			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+			this.dataGridView1.Name = "dataGridView1";
+			this.dataGridView1.Size = new System.Drawing.Size(660, 398);
+			this.dataGridView1.TabIndex = 0;
+			// 
+			// tabPage1
+			// 
+			this.tabPage1.Location = new System.Drawing.Point(4, 22);
+			this.tabPage1.Name = "tabPage1";
+			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage1.Size = new System.Drawing.Size(536, 404);
+			this.tabPage1.TabIndex = 1;
+			this.tabPage1.Text = "tabPage1";
+			this.tabPage1.UseVisualStyleBackColor = true;
 			// 
 			// StatusBar
 			// 
 			this.StatusBar.Location = new System.Drawing.Point(0, 479);
 			this.StatusBar.Name = "StatusBar";
-			this.StatusBar.Size = new System.Drawing.Size(708, 22);
+			this.StatusBar.Size = new System.Drawing.Size(875, 22);
 			this.StatusBar.TabIndex = 4;
 			this.StatusBar.Text = "statusStrip1";
 			// 
@@ -294,60 +324,82 @@
 			// 
 			// splitContainer1.Panel1
 			// 
-			this.splitContainer1.Panel1.Controls.Add(this.Pull);
+			this.splitContainer1.Panel1.Controls.Add(this.listBox1);
+			this.splitContainer1.Panel1.Controls.Add(this.treeView1);
 			// 
 			// splitContainer1.Panel2
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.Tables);
-			this.splitContainer1.Size = new System.Drawing.Size(708, 430);
-			this.splitContainer1.SplitterDistance = 160;
+			this.splitContainer1.Size = new System.Drawing.Size(875, 430);
+			this.splitContainer1.SplitterDistance = 197;
 			this.splitContainer1.TabIndex = 5;
 			// 
-			// dataGridView1
+			// listBox1
 			// 
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(530, 398);
-			this.dataGridView1.TabIndex = 0;
+			this.listBox1.DataSource = this.lessonsBindingSource;
+			this.listBox1.DisplayMember = "NameLesson";
+			this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+			this.listBox1.FormattingEnabled = true;
+			this.listBox1.ItemHeight = 16;
+			this.listBox1.Location = new System.Drawing.Point(0, 0);
+			this.listBox1.Name = "listBox1";
+			this.listBox1.Size = new System.Drawing.Size(197, 430);
+			this.listBox1.TabIndex = 1;
+			this.listBox1.ValueMember = "NameLesson";
 			// 
-			// Pull
+			// lessonsBindingSource
 			// 
-			this.Pull.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.Pull.HideSelection = false;
-			this.Pull.Location = new System.Drawing.Point(0, 0);
-			this.Pull.Name = "Pull";
-			this.Pull.Size = new System.Drawing.Size(160, 430);
-			this.Pull.TabIndex = 1;
-			this.Pull.UseCompatibleStateImageBehavior = false;
-			this.Pull.View = System.Windows.Forms.View.Tile;
+			this.lessonsBindingSource.DataMember = "Lessons";
+			this.lessonsBindingSource.DataSource = this.dipperDBDataSet;
+			// 
+			// dipperDBDataSet
+			// 
+			this.dipperDBDataSet.DataSetName = "DipperDBDataSet";
+			this.dipperDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			// 
+			// treeView1
+			// 
+			this.treeView1.BackColor = System.Drawing.SystemColors.ButtonFace;
+			this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.treeView1.Cursor = System.Windows.Forms.Cursors.Arrow;
+			this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.treeView1.Location = new System.Drawing.Point(0, 0);
+			this.treeView1.Name = "treeView1";
+			this.treeView1.Size = new System.Drawing.Size(197, 430);
+			this.treeView1.TabIndex = 0;
+			// 
+			// lessonsTableAdapter
+			// 
+			this.lessonsTableAdapter.ClearBeforeFill = true;
 			// 
 			// Dipper
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-			this.ClientSize = new System.Drawing.Size(708, 501);
+			this.ClientSize = new System.Drawing.Size(875, 501);
 			this.Controls.Add(this.splitContainer1);
 			this.Controls.Add(this.StatusBar);
 			this.Controls.Add(this.ToolBar);
 			this.Controls.Add(this.Enter);
 			this.Controls.Add(this.Menu);
 			this.Name = "Dipper";
-			this.Text = "Dipper";
-			this.Load += new System.EventHandler(this.Form1_Load);
+			this.Text = "TimeTable";
+			this.Load += new System.EventHandler(this.Dipper_Load);
 			this.Menu.ResumeLayout(false);
 			this.Menu.PerformLayout();
 			this.ToolBar.ResumeLayout(false);
 			this.ToolBar.PerformLayout();
 			this.Tables.ResumeLayout(false);
 			this.Table1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.splitContainer1.Panel1.ResumeLayout(false);
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.lessonsBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dipperDBDataSet)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -355,7 +407,7 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip Menu;
+        new private System.Windows.Forms.MenuStrip Menu;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem создатьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
@@ -366,7 +418,7 @@
         private System.Windows.Forms.ToolStripMenuItem печатьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
-        private System.Windows.Forms.Button Enter;
+        new private System.Windows.Forms.Button Enter;
         private System.Windows.Forms.ToolStrip ToolBar;
         private System.Windows.Forms.TabControl Tables;
         private System.Windows.Forms.TabPage Table1;
@@ -380,10 +432,14 @@
         private System.Windows.Forms.ToolStripTextBox Search;
         private System.Windows.Forms.ToolStripButton AddLesson;
 		private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ListView Pull;
-    }
+		private System.Windows.Forms.ListBox listBox1;
+		private System.Windows.Forms.TabPage tabPage1;
+		private System.Windows.Forms.DataGridView dataGridView1;
+		private TimeTable.DipperDBDataSet dipperDBDataSet;
+		private System.Windows.Forms.BindingSource lessonsBindingSource;
+		private TimeTable.DipperDBDataSetTableAdapters.LessonsTableAdapter lessonsTableAdapter;
+	}
 }
-
