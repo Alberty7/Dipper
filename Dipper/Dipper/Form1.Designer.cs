@@ -242,6 +242,7 @@
             this.AddLesson.Name = "AddLesson";
             this.AddLesson.Size = new System.Drawing.Size(23, 22);
             this.AddLesson.Text = "Добавить предмет";
+            this.AddLesson.Click += new System.EventHandler(this.AddLesson_Click);
             // 
             // Tables
             // 
