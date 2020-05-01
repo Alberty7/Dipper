@@ -5,9 +5,12 @@ public class Lesson
     private string lessonName;
 
     public string LessonName { get => lessonName; private set { if (!string.IsNullOrEmpty(value)) lessonName = value; } }
-    public string Teacher { get; set; }
-    public int Time { get; set; }
-    public int End { get; set; }
+    public string Teacher { get; private set; }
+    public DateTime StartLesson { get; private set; }
+    public DateTime AinishLesson { get; private set; }
+    public int AllTimeLesson { get; private set; }
+    public string NameGroup { get; private set; }
+    public int NumberGroup { get; private set; }
 
     public Lesson(string nameOfLesson, string teacher, int time)
     {
@@ -19,8 +22,11 @@ public class Lesson
 
     public Lesson(int start, int finish)
     {
+        if ()
         if (start < finish)
         {
+            DateTime = Time;
+
             Time = start;
             End = finish;
         }

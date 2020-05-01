@@ -96,6 +96,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SortingDialog.resx">
       <DependentUpon>SortingDialog.cs</DependentUpon>
@@ -124,6 +125,21 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter_filters_funnel_list_navigation_sort_sorting_icon_123212.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\-create-new-folder_90671.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_circle_create_expand_new_plus_icon_123218.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter_filters_funnel_list_navigation_sort_sorting_icon_1232121.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder-black-open-shape_icon-icons.com_56988.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
