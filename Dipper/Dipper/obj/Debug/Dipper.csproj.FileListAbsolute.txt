@@ -22,3 +22,5 @@ C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\D
 C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\Dipper.SortingDialog.resources
 C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\Dipper.csprojAssemblyReference.cache
 C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\Dipper.AddLessonForm.resources
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.AddLessonForm.resources
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.SortingDialog.resources

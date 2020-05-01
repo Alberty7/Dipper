@@ -14,6 +14,7 @@ namespace Dipper
 	public partial class Dipper : Form
 	{
 		private bool Logined = false;
+		private HashSet<Subject> PullOfSublect { get; set; }
 		public Dipper()
 		{
 			InitializeComponent();
@@ -66,7 +67,11 @@ namespace Dipper
 			using (AddLessonForm dialog = new AddLessonForm())
 			{
 				dialog.Owner = this;
-				dialog.ShowDialog();
+				if(dialog.ShowDialog() == DialogResult.OK) {
+					string teacher = $"{dialog.FIO[0]} {dialog.FIO[1]} {dialog.FIO[2]}";
+					PullOfSublect.Add(new Subject(dialog.subjectName, teacher, dialog.Hourse));
+					Pull.
+				}
 
 			}
 		}
