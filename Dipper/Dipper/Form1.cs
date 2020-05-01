@@ -55,5 +55,10 @@ namespace Dipper
 		{
 			Environment.Exit(0);
 		}
+
+		private void Sort_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
