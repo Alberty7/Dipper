@@ -68,7 +68,7 @@
             this.справкаToolStripMenuItem});
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(1026, 24);
+            this.Menu.Size = new System.Drawing.Size(735, 24);
             this.Menu.TabIndex = 0;
             this.Menu.Text = "menuStrip1";
             // 
@@ -159,7 +159,7 @@
             // Enter
             // 
             this.Enter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Enter.Location = new System.Drawing.Point(939, 1);
+            this.Enter.Location = new System.Drawing.Point(648, 1);
             this.Enter.Name = "Enter";
             this.Enter.Size = new System.Drawing.Size(75, 23);
             this.Enter.TabIndex = 1;
@@ -178,7 +178,7 @@
             this.AddLesson});
             this.ToolBar.Location = new System.Drawing.Point(0, 24);
             this.ToolBar.Name = "ToolBar";
-            this.ToolBar.Size = new System.Drawing.Size(1026, 25);
+            this.ToolBar.Size = new System.Drawing.Size(735, 25);
             this.ToolBar.TabIndex = 2;
             this.ToolBar.Text = "toolStrip1";
             // 
@@ -242,7 +242,7 @@
             this.Tables.Location = new System.Drawing.Point(0, 52);
             this.Tables.Name = "Tables";
             this.Tables.SelectedIndex = 0;
-            this.Tables.Size = new System.Drawing.Size(1026, 454);
+            this.Tables.Size = new System.Drawing.Size(735, 336);
             this.Tables.TabIndex = 3;
             // 
             // Table1
@@ -251,7 +251,7 @@
             this.Table1.Location = new System.Drawing.Point(4, 22);
             this.Table1.Name = "Table1";
             this.Table1.Padding = new System.Windows.Forms.Padding(3);
-            this.Table1.Size = new System.Drawing.Size(1018, 428);
+            this.Table1.Size = new System.Drawing.Size(727, 310);
             this.Table1.TabIndex = 0;
             this.Table1.Text = "tabPage1";
             this.Table1.UseVisualStyleBackColor = true;
@@ -264,14 +264,14 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(-4, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1022, 428);
+            this.dataGridView1.Size = new System.Drawing.Size(731, 310);
             this.dataGridView1.TabIndex = 0;
             // 
             // StatusBar
             // 
-            this.StatusBar.Location = new System.Drawing.Point(0, 509);
+            this.StatusBar.Location = new System.Drawing.Point(0, 391);
             this.StatusBar.Name = "StatusBar";
-            this.StatusBar.Size = new System.Drawing.Size(1026, 22);
+            this.StatusBar.Size = new System.Drawing.Size(735, 22);
             this.StatusBar.TabIndex = 4;
             this.StatusBar.Text = "statusStrip1";
             // 
@@ -279,7 +279,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1026, 531);
+            this.ClientSize = new System.Drawing.Size(735, 413);
             this.Controls.Add(this.StatusBar);
             this.Controls.Add(this.Tables);
             this.Controls.Add(this.ToolBar);

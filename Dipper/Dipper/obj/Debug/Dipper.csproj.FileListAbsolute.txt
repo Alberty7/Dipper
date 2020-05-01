@@ -19,3 +19,4 @@ D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.csproj.GenerateReso
 D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.csproj.CoreCompileInputs.cache
 D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.exe
 D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.pdb
+C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\Dipper.Password.resources
