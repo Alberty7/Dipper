@@ -60,5 +60,15 @@ namespace Dipper
 		{
 
 		}
+
+		private void AddLesson_Click(object sender, EventArgs e)
+		{
+			using (AddLessonForm dialog = new AddLessonForm())
+			{
+				dialog.Owner = this;
+				dialog.ShowDialog();
+
+			}
+		}
 	}
 }
