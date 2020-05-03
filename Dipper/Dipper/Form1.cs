@@ -8,25 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Dipper
+namespace TimeTable
 {
-
 	public partial class Dipper : Form
 	{
 		private bool Logined = false;
+		private HashSet<Subject> PullOfSublect { get; set; }
 		public Dipper()
 		{
 			InitializeComponent();
-		}
-
-		private void Form1_Load(object sender, EventArgs e)
-		{
-
-		}
-
-		private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-
+			PullOfSublect = new HashSet<Subject>();
 		}
 
 		private void Enter_Click(object sender, EventArgs e)
@@ -34,24 +25,16 @@ namespace Dipper
 			using (Password dialog = new Password())
 			{
 				dialog.Owner = this;
-				dialog.ShowDialog();
-				if (dialog.isSuccsessful) 
+				if (dialog.ShowDialog() == DialogResult.OK) 
 				{
 					Enter.Hide();
-					Logined = dialog.isSuccsessful;
-					MessageBox.Show("Вход выполнен успешно!");
-				}
-
-				else if (dialog.notInPasswords)
-				{
-
-					MessageBox.Show("Ошибка, неверный пароль!");
+					Logined = true;
 				}
 			}
 		}
 
 
-		private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+		private void ВыходToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			Environment.Exit(0);
 		}
@@ -66,9 +49,22 @@ namespace Dipper
 			using (AddLessonForm dialog = new AddLessonForm())
 			{
 				dialog.Owner = this;
-				dialog.ShowDialog();
-
+				if(dialog.ShowDialog() == DialogResult.OK) {
+					string teacher = $"{dialog.FIO[0]} {dialog.FIO[1]} {dialog.FIO[2]}";
+					Subject temp = new Subject(dialog.SubjectNameString, teacher, dialog.Hourse);
+					PullOfSublect.Add(temp);
+				}
 			}
+		}
+
+		private void Dipper_Load(object sender, EventArgs e) {
+			// TODO: данная строка кода позволяет загрузить данные в таблицу "dipperDBDataSet.Lessons". При необходимости она может быть перемещена или удалена.
+			this.lessonsTableAdapter.Fill(this.dipperDBDataSet.Lessons);
+
+		}
+
+		private void Search_Click(object sender, EventArgs e) {
+
 		}
 	}
 }

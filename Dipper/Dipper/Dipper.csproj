@@ -6,12 +6,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D0E73F9B-6B14-4619-BEBA-27930B2F26FB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Dipper</RootNamespace>
-    <AssemblyName>Dipper</AssemblyName>
+    <RootNamespace>TimeTable</RootNamespace>
+    <AssemblyName>Diplom</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -66,6 +66,11 @@
     </Compile>
     <Compile Include="AddLessonForm.Designer.cs">
       <DependentUpon>AddLessonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DipperDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DipperDBDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -110,6 +115,17 @@
     <EmbeddedResource Include="SortingDialog.resx">
       <DependentUpon>SortingDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DipperDBDataSet.xsc">
+      <DependentUpon>DipperDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DipperDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DipperDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DipperDBDataSet.xss">
+      <DependentUpon>DipperDBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -149,6 +165,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\folder-black-open-shape_icon-icons.com_56988.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DipperDB.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
