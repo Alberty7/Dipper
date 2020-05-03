@@ -30,7 +30,6 @@ namespace TimeTable
         /// </summary>
         private void InitializeComponent()
         {
-			this.components = new System.ComponentModel.Container();
 			this.Menu = new System.Windows.Forms.MenuStrip();
 			this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.создатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,11 +59,8 @@ namespace TimeTable
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.listBox1 = new System.Windows.Forms.ListBox();
-			this.lessonsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.dipperDBDataSet = new TimeTable.DipperDBDataSet();
+			this.Pull = new System.Windows.Forms.ListBox();
 			this.treeView1 = new System.Windows.Forms.TreeView();
-			this.lessonsTableAdapter = new TimeTable.DipperDBDataSetTableAdapters.LessonsTableAdapter();
 			this.Menu.SuspendLayout();
 			this.ToolBar.SuspendLayout();
 			this.Tables.SuspendLayout();
@@ -74,8 +70,6 @@ namespace TimeTable
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.lessonsBindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.dipperDBDataSet)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// Menu
@@ -275,7 +269,7 @@ namespace TimeTable
 			this.Tables.Location = new System.Drawing.Point(0, 0);
 			this.Tables.Name = "Tables";
 			this.Tables.SelectedIndex = 0;
-			this.Tables.Size = new System.Drawing.Size(674, 430);
+			this.Tables.Size = new System.Drawing.Size(675, 430);
 			this.Tables.TabIndex = 3;
 			// 
 			// Table1
@@ -284,7 +278,7 @@ namespace TimeTable
 			this.Table1.Location = new System.Drawing.Point(4, 22);
 			this.Table1.Name = "Table1";
 			this.Table1.Padding = new System.Windows.Forms.Padding(3);
-			this.Table1.Size = new System.Drawing.Size(666, 404);
+			this.Table1.Size = new System.Drawing.Size(667, 404);
 			this.Table1.TabIndex = 0;
 			this.Table1.Text = "tabPage1";
 			this.Table1.UseVisualStyleBackColor = true;
@@ -295,7 +289,7 @@ namespace TimeTable
 			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dataGridView1.Location = new System.Drawing.Point(3, 3);
 			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(660, 398);
+			this.dataGridView1.Size = new System.Drawing.Size(661, 398);
 			this.dataGridView1.TabIndex = 0;
 			// 
 			// tabPage1
@@ -303,7 +297,7 @@ namespace TimeTable
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(536, 404);
+			this.tabPage1.Size = new System.Drawing.Size(667, 404);
 			this.tabPage1.TabIndex = 1;
 			this.tabPage1.Text = "tabPage1";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -324,39 +318,26 @@ namespace TimeTable
 			// 
 			// splitContainer1.Panel1
 			// 
-			this.splitContainer1.Panel1.Controls.Add(this.listBox1);
+			this.splitContainer1.Panel1.Controls.Add(this.Pull);
 			this.splitContainer1.Panel1.Controls.Add(this.treeView1);
 			// 
 			// splitContainer1.Panel2
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.Tables);
 			this.splitContainer1.Size = new System.Drawing.Size(875, 430);
-			this.splitContainer1.SplitterDistance = 197;
+			this.splitContainer1.SplitterDistance = 196;
 			this.splitContainer1.TabIndex = 5;
 			// 
-			// listBox1
+			// Pull
 			// 
-			this.listBox1.DataSource = this.lessonsBindingSource;
-			this.listBox1.DisplayMember = "NameLesson";
-			this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-			this.listBox1.FormattingEnabled = true;
-			this.listBox1.ItemHeight = 16;
-			this.listBox1.Location = new System.Drawing.Point(0, 0);
-			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(197, 430);
-			this.listBox1.TabIndex = 1;
-			this.listBox1.ValueMember = "NameLesson";
-			// 
-			// lessonsBindingSource
-			// 
-			this.lessonsBindingSource.DataMember = "Lessons";
-			this.lessonsBindingSource.DataSource = this.dipperDBDataSet;
-			// 
-			// dipperDBDataSet
-			// 
-			this.dipperDBDataSet.DataSetName = "DipperDBDataSet";
-			this.dipperDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+			this.Pull.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Pull.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+			this.Pull.FormattingEnabled = true;
+			this.Pull.ItemHeight = 16;
+			this.Pull.Location = new System.Drawing.Point(0, 0);
+			this.Pull.Name = "Pull";
+			this.Pull.Size = new System.Drawing.Size(196, 430);
+			this.Pull.TabIndex = 1;
 			// 
 			// treeView1
 			// 
@@ -366,12 +347,8 @@ namespace TimeTable
 			this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.treeView1.Location = new System.Drawing.Point(0, 0);
 			this.treeView1.Name = "treeView1";
-			this.treeView1.Size = new System.Drawing.Size(197, 430);
+			this.treeView1.Size = new System.Drawing.Size(196, 430);
 			this.treeView1.TabIndex = 0;
-			// 
-			// lessonsTableAdapter
-			// 
-			this.lessonsTableAdapter.ClearBeforeFill = true;
 			// 
 			// Dipper
 			// 
@@ -386,7 +363,6 @@ namespace TimeTable
 			this.Controls.Add(this.Menu);
 			this.Name = "Dipper";
 			this.Text = "TimeTable";
-			this.Load += new System.EventHandler(this.Dipper_Load);
 			this.Menu.ResumeLayout(false);
 			this.Menu.PerformLayout();
 			this.ToolBar.ResumeLayout(false);
@@ -398,8 +374,6 @@ namespace TimeTable
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.lessonsBindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.dipperDBDataSet)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -435,11 +409,8 @@ namespace TimeTable
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-		private System.Windows.Forms.ListBox listBox1;
+		private System.Windows.Forms.ListBox Pull;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.DataGridView dataGridView1;
-		private TimeTable.DipperDBDataSet dipperDBDataSet;
-		private System.Windows.Forms.BindingSource lessonsBindingSource;
-		private TimeTable.DipperDBDataSetTableAdapters.LessonsTableAdapter lessonsTableAdapter;
 	}
 }

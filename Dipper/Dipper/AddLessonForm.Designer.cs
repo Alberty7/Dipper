@@ -105,6 +105,11 @@
 			// AcademicHours
 			// 
 			this.AcademicHours.Location = new System.Drawing.Point(171, 95);
+			this.AcademicHours.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
 			this.AcademicHours.Name = "AcademicHours";
 			this.AcademicHours.Size = new System.Drawing.Size(100, 20);
 			this.AcademicHours.TabIndex = 8;
