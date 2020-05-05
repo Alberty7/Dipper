@@ -38,7 +38,7 @@ namespace TimeTable {
 
 			PullOfSublect = JsonConvert.DeserializeObject<HashSet<Subject>>(File.ReadAllText(pathToSubjects));
 			//Teachers = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(File.ReadAllText(pathToTeachers));
-			//Week = JsonConvert.DeserializeObject<Dictionary<string, (DateTime, DateTime)[]>>(File.ReadAllText(pathToDayWeek));
+			Week = JsonConvert.DeserializeObject<Dictionary<string, (DateTime, DateTime)[]>>(File.ReadAllText(pathToDayWeek));
 			//Courses = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(File.ReadAllText(pathToCourses));
 			//Groups = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(File.ReadAllText(pathToGroups));
 			//TimeTable = JsonConvert.DeserializeObject<LinkedList<Lesson>>(File.ReadAllText(pathToTimeTable));
@@ -105,7 +105,11 @@ namespace TimeTable {
 
 			if((hit.ColumnIndex > -1) && (hit.RowIndex > -1)) {
 				dataGridView1.CurrentCell = dataGridView1[hit.ColumnIndex, hit.RowIndex];
-				dataGridView1.CurrentCell.Value = e.Data.GetData(DataFormats.Serializable);
+				dataGridView1.CurrentCell.Value = new Lesson(e.Data.GetData(DataFormats.Serializable, true) as Subject,
+												 Week[dataGridView1[0, hit.RowIndex].Value.ToString()][Convert.ToInt32(dataGridView1[1, hit.RowIndex].Value)].Item1,
+												 Week[dataGridView1[0, hit.RowIndex].Value.ToString()][Convert.ToInt32(dataGridView1[1, hit.RowIndex].Value)].Item2,
+												 dataGridView1[hit.ColumnIndex, 0].Value.ToString(),
+												 Convert.ToInt32(dataGridView1.Columns[hit.ColumnIndex].HeaderText));
 			}
 		}
 
@@ -121,11 +125,5 @@ namespace TimeTable {
 				e.Effect = DragDropEffects.None;
 			}
 		}
-
-		//private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e) {
-		//	if(e.ColumnIndex > -1 && e.RowIndex > -1)
-		//		dataGridView1.CurrentCell =
-		//			dataGridView1[e.ColumnIndex, e.RowIndex];
-		//}
 	}
 }

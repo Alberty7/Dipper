@@ -11,6 +11,11 @@ public class Subject : IComparable, ISerializable {
         Teacher = teacher;
     }
 
+    public Subject(Subject other) {
+        LessonName = other.LessonName;
+        Teacher = other.Teacher;
+    }
+
     public Subject(SerializationInfo info, StreamingContext context) {
         LessonName = info.GetString("LessonName");
         Teacher = info.GetString("Teacher");
@@ -43,6 +48,12 @@ public class Lesson : Subject{
         NameGroup = nameGroup;
         NumberGroup = numberGroup;
     }
+    public Lesson(Subject subject, DateTime startLesson, DateTime finishLesson, string nameGroup, int numberGroup) : base(subject) {
+        StartLesson = startLesson;
+        FinishLesson = finishLesson;
+        NameGroup = nameGroup;
+        NumberGroup = numberGroup;
+    }
 
     public new int CompareTo(object obj) {
         switch(obj) {
@@ -53,5 +64,5 @@ public class Lesson : Subject{
         }
     }
 
-    public override string ToString() => $"{base.ToString()}\t{StartLesson.Hour}:{StartLesson.Minute} — {FinishLesson.Hour}:{FinishLesson.Minute}\n{NameGroup}\n{NumberGroup}";
+    public override string ToString() => base.ToString();
 }
