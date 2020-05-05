@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using GemBox.Spreadsheet;
+using GemBox.Spreadsheet.WinFormsUtilities;
+using System.Drawing;
 
 namespace TimeTable {
 	public partial class Dipper : Form {
@@ -19,6 +17,7 @@ namespace TimeTable {
 		private static string pathToCourses = @"..\courses.json";
 		private static string pathToGroups = @"..\groups.json";
 		private static string pathToTimeTable = @"..\timetable.json";
+		private static string pathToTable = @"..\Template.xlsx";
 
 		private HashSet<Subject> PullOfSublect { get; set; }
 		private LinkedList<Lesson> TimeTable { get; set; }
@@ -35,7 +34,7 @@ namespace TimeTable {
 			Courses = new Dictionary<string, string[]>();
 			Groups = new Dictionary<string, string[]>();
 			TimeTable = new LinkedList<Lesson>();
-
+			LoadTemplate();
 
 			PullOfSublect = JsonConvert.DeserializeObject<HashSet<Subject>>(File.ReadAllText(pathToSubjects));
 			//Teachers = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(File.ReadAllText(pathToTeachers));
@@ -79,10 +78,54 @@ namespace TimeTable {
 				dialog.Owner = this;
 				if(dialog.ShowDialog() == DialogResult.OK) {
 					string teacher = $"{dialog.FIO[0]} {dialog.FIO[1]} {dialog.FIO[2]}";
-					Subject temp = new Subject(dialog.SubjectNameString, teacher, dialog.Hourse);
+					Subject temp = new Subject(dialog.SubjectNameString, teacher);
 					PullOfSublect.Add(temp);
 				}
 			}
 		}
+
+		private void LoadTemplate() {
+			ExcelFile workbook = ExcelFile.Load(pathToTable);
+
+			DataGridViewConverter.ExportToDataGridView(workbook.Worksheets.ActiveWorksheet, dataGridView1, new ExportToDataGridViewOptions() { ColumnHeaders = true });
+		}
+
+		private void SaveTemplate() {
+			ExcelFile workbook = new ExcelFile();
+			ExcelWorksheet worksheet = workbook.Worksheets.Add("Sheet1");
+
+			DataGridViewConverter.ImportFromDataGridView(worksheet, dataGridView1, new ImportFromDataGridViewOptions() { ColumnHeaders = true });
+
+			workbook.Save(pathToTable);
+		}
+
+		private void dataGridView1_DragDrop(object sender, DragEventArgs e) {
+			Point clientPoint = dataGridView1.PointToClient(new Point(e.X, e.Y));
+			var hit = dataGridView1.HitTest(clientPoint.X, clientPoint.Y);
+
+			if((hit.ColumnIndex > -1) && (hit.RowIndex > -1)) {
+				dataGridView1.CurrentCell = dataGridView1[hit.ColumnIndex, hit.RowIndex];
+				dataGridView1.CurrentCell.Value = e.Data.GetData(DataFormats.Serializable);
+			}
+		}
+
+		private void Pull_MouseDown(object sender, MouseEventArgs e) {
+			Pull.DoDragDrop(Pull.SelectedItem, DragDropEffects.Scroll | DragDropEffects.Move | DragDropEffects.Copy);
+		}
+
+		private void dataGridView1_DragEnter(object sender, DragEventArgs e) {
+			if(e.Data.GetDataPresent(DataFormats.Serializable)) {
+				e.Effect = DragDropEffects.Move | DragDropEffects.Copy | DragDropEffects.Scroll;
+			}
+			else {
+				e.Effect = DragDropEffects.None;
+			}
+		}
+
+		//private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e) {
+		//	if(e.ColumnIndex > -1 && e.RowIndex > -1)
+		//		dataGridView1.CurrentCell =
+		//			dataGridView1[e.ColumnIndex, e.RowIndex];
+		//}
 	}
 }

@@ -16,7 +16,6 @@ namespace TimeTable
     {
         public string[] FIO { get; private set; } = new string[3];
         public string SubjectNameString { get; private set; } = "";
-        public int Hourse { get; private set; } = 0;
         public AddLessonForm()
         {
             InitializeComponent();
@@ -79,8 +78,7 @@ namespace TimeTable
             FIO[0] = LastName.Text;
             FIO[1] = FirstName.Text;
             FIO[2] = FatherName.Text;
-            SubjectNameString = SubjectName.Text;
-            Hourse = (int)AcademicHours.Value; 
+            SubjectNameString = SubjectName.Text; 
             DialogResult = DialogResult.OK;
             Hide();
         }

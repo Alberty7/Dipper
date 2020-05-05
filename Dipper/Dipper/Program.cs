@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using GemBox.Spreadsheet;
 
-namespace TimeTable
-{
+namespace TimeTable {
     static class Program
     {
         /// <summary>
@@ -14,6 +11,7 @@ namespace TimeTable
         [STAThread]
         static void Main()
         {
+            SpreadsheetInfo.SetLicense("FREE-LIMITED-KEY");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Dipper());

@@ -34,10 +34,7 @@
 			this.LastName = new System.Windows.Forms.TextBox();
 			this.OK = new System.Windows.Forms.Button();
 			this.SubjectName = new System.Windows.Forms.TextBox();
-			this.AcademicHours = new System.Windows.Forms.NumericUpDown();
-			this.label1 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.AcademicHours)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// groupBox1
@@ -47,7 +44,7 @@
 			this.groupBox1.Controls.Add(this.LastName);
 			this.groupBox1.Location = new System.Drawing.Point(12, 12);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(142, 137);
+			this.groupBox1.Size = new System.Drawing.Size(142, 115);
 			this.groupBox1.TabIndex = 3;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Преподаватель";
@@ -84,7 +81,7 @@
 			// 
 			// OK
 			// 
-			this.OK.Location = new System.Drawing.Point(182, 126);
+			this.OK.Location = new System.Drawing.Point(185, 93);
 			this.OK.Name = "OK";
 			this.OK.Size = new System.Drawing.Size(75, 23);
 			this.OK.TabIndex = 6;
@@ -102,34 +99,11 @@
 			this.SubjectName.Enter += new System.EventHandler(this.SubjectName_Enter);
 			this.SubjectName.Leave += new System.EventHandler(this.SubjectName_Leave);
 			// 
-			// AcademicHours
-			// 
-			this.AcademicHours.Location = new System.Drawing.Point(171, 95);
-			this.AcademicHours.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-			this.AcademicHours.Name = "AcademicHours";
-			this.AcademicHours.Size = new System.Drawing.Size(100, 20);
-			this.AcademicHours.TabIndex = 8;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(168, 76);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(174, 13);
-			this.label1.TabIndex = 9;
-			this.label1.Text = "Предусмотрено часов в семестр";
-			// 
 			// AddLessonForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(365, 182);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.AcademicHours);
+			this.ClientSize = new System.Drawing.Size(294, 137);
 			this.Controls.Add(this.SubjectName);
 			this.Controls.Add(this.OK);
 			this.Controls.Add(this.groupBox1);
@@ -137,7 +111,6 @@
 			this.Text = "AddLessonForm";
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.AcademicHours)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -150,7 +123,5 @@
         private System.Windows.Forms.TextBox LastName;
         private System.Windows.Forms.Button OK;
         private System.Windows.Forms.TextBox SubjectName;
-		private System.Windows.Forms.NumericUpDown AcademicHours;
-		private System.Windows.Forms.Label label1;
 	}
 }

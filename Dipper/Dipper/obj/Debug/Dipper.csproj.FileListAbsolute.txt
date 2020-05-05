@@ -27,3 +27,7 @@ D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.csprojAssemblyRefer
 D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\Newtonsoft.Json.dll
 D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\Newtonsoft.Json.xml
 D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.csproj.CopyComplete
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\GemBox.Spreadsheet.dll
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\GemBox.Spreadsheet.WinFormsUtilities.dll
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\GemBox.Spreadsheet.xml
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\GemBox.Spreadsheet.WinFormsUtilities.xml
