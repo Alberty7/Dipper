@@ -33,7 +33,6 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.passwordsTableAdapter1 = new TimeTable.DipperDBDataSetTableAdapters.PasswordsTableAdapter();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -81,10 +80,6 @@
 			this.label2.Size = new System.Drawing.Size(0, 13);
 			this.label2.TabIndex = 4;
 			// 
-			// passwordsTableAdapter1
-			// 
-			this.passwordsTableAdapter1.ClearBeforeFill = true;
-			// 
 			// Password
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -111,6 +106,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
-        private DipperDBDataSetTableAdapters.PasswordsTableAdapter passwordsTableAdapter1;
-    }
+	}
 }

@@ -17,15 +17,23 @@ namespace TimeTable
             InitializeComponent();
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e) {
+        private void isCourseSorting_CheckedChanged(object sender, EventArgs e) => Course.Enabled = isCourseSorting.Checked;
 
+        private void isGroupSorting_CheckedChanged(object sender, EventArgs e) => Groupe.Enabled = isGroupSorting.Checked;
+
+        private void isDayOfWeekSotrting_CheckedChanged(object sender, EventArgs e) => DayWeek.Enabled = isDayOfWeekSotrting.Checked;
+
+        private void isTimeSorting_CheckedChanged(object sender, EventArgs e) => Time.Enabled = isTimeSorting.Checked;
+
+        private void isSubjectSorting_CheckedChanged(object sender, EventArgs e) => Subject.Enabled = isSubjectSorting.Checked;
+
+        private void isTeacherSorting_CheckedChanged(object sender, EventArgs e) => Teacher.Enabled = isTeacherSorting.Checked;
+
+        private void button2_Click(object sender, EventArgs e) {
+            DialogResult = DialogResult.Cancel;
         }
 
-        private void SortingDialog_Load(object sender, EventArgs e) {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "dipperDBDataSet.Years". При необходимости она может быть перемещена или удалена.
-            this.yearsTableAdapter.Fill(this.dipperDBDataSet.Years);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "dipperDBDataSet.Lessons". При необходимости она может быть перемещена или удалена.
-            this.lessonsTableAdapter.Fill(this.dipperDBDataSet.Lessons);
+        private void button1_Click(object sender, EventArgs e) {
 
         }
     }
