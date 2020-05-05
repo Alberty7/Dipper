@@ -3,7 +3,6 @@ C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\D
 D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.csproj.GenerateResource.cache
 D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.csproj.CoreCompileInputs.cache
 C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\Dipper.csprojAssemblyReference.cache
-D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\DipperDB.accdb
 D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\Diplom.exe.config
 D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\Diplom.exe
 D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\Diplom.pdb
@@ -25,3 +24,11 @@ C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\T
 C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\TimeTable.SortingDialog.resources
 C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\Diplom.exe
 C:\Users\shayk\OneDrive\Рабочий стол\Diplom\Dipper\Dipper\obj\Debug\Diplom.pdb
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\GemBox.Spreadsheet.dll
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\GemBox.Spreadsheet.WinFormsUtilities.dll
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\Newtonsoft.Json.dll
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\GemBox.Spreadsheet.xml
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\GemBox.Spreadsheet.WinFormsUtilities.xml
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\Newtonsoft.Json.xml
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.csprojAssemblyReference.cache
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.csproj.CopyComplete
