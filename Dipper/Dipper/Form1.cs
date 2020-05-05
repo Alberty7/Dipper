@@ -19,12 +19,12 @@ namespace TimeTable {
 		private static string pathToTimeTable = @"..\timetable.json";
 		private static string pathToTable = @"..\Template.xlsx";
 
-		private HashSet<Subject> PullOfSublect { get; set; }
-		private LinkedList<Lesson> TimeTable { get; set; }
-		private Dictionary<string, string[]> Teachers { get; set; }
-		private Dictionary<string, (DateTime, DateTime)[]> Week { get; set; }
-		private Dictionary<string, string[]> Courses { get; set; }
-		private Dictionary<string, string[]> Groups { get; set; }
+		public HashSet<Subject> PullOfSublect { get; set; }
+		public LinkedList<Lesson> TimeTable { get; set; }
+		public Dictionary<string, string[]> Teachers { get; set; }
+		public Dictionary<string, (DateTime, DateTime)[]> Week { get; set; }
+		public Dictionary<string, string[]> Courses { get; set; }
+		public Dictionary<string, string[]> Groups { get; set; }
 
 		public Dipper() {
 			InitializeComponent();
@@ -70,6 +70,7 @@ namespace TimeTable {
 
 		private void Sort_Click(object sender, EventArgs e) {
 			SortingDialog dialog = new SortingDialog();
+			dialog.Owner = this;
 			dialog.ShowDialog();
 		}
 

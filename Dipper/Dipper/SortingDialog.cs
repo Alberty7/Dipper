@@ -12,6 +12,7 @@ namespace TimeTable
 {
     public partial class SortingDialog : Form
     {
+        Dipper main;
         public SortingDialog()
         {
             InitializeComponent();
@@ -35,6 +36,28 @@ namespace TimeTable
 
         private void button1_Click(object sender, EventArgs e) {
 
+        }
+
+        private void SortingDialog_Load(object sender, EventArgs e) {
+            main = this.Owner as Dipper;
+            Course.DataSource = main.Courses.Keys.ToList();
+            
+            Groupe.DataSource = main.Groups.Keys.ToList();
+            DayWeek.DataSource = main.Week.Keys.ToList();
+            List<DateTime> list1 = new List<DateTime>();
+            List<DateTime> list2 = new List<DateTime>();
+            foreach(var item in main.Week["Понедельник"]) {
+                list1.Add(item.Item1);
+                list2.Add(item.Item2);
+            }
+            Start.DataSource = list1;
+            Start.FormattingEnabled = true;
+            Start.FormatString = "HH:mm";
+            End.DataSource = list2;
+            End.FormattingEnabled = true;
+            End.FormatString = "HH:mm";
+            Subject.DataSource = main.PullOfSublect.ToList();
+            Teacher.DataSource = main.Teachers.Keys.ToList();
         }
     }
 }
