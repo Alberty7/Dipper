@@ -40,9 +40,6 @@ namespace TimeTable
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.печатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.показатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.Enter = new System.Windows.Forms.Button();
 			this.ToolBar = new System.Windows.Forms.ToolStrip();
 			this.Create = new System.Windows.Forms.ToolStripButton();
@@ -50,7 +47,6 @@ namespace TimeTable
 			this.Open = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.Sort = new System.Windows.Forms.ToolStripButton();
-			this.Search = new System.Windows.Forms.ToolStripTextBox();
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
 			this.AddLesson = new System.Windows.Forms.ToolStripButton();
 			this.Tables = new System.Windows.Forms.TabControl();
@@ -75,11 +71,10 @@ namespace TimeTable
 			// Menu
 			// 
 			this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
-            this.справкаToolStripMenuItem});
+            this.файлToolStripMenuItem});
 			this.Menu.Location = new System.Drawing.Point(0, 0);
 			this.Menu.Name = "Menu";
-			this.Menu.Size = new System.Drawing.Size(875, 24);
+			this.Menu.Size = new System.Drawing.Size(1109, 24);
 			this.Menu.TabIndex = 0;
 			this.Menu.Text = "menuStrip1";
 			// 
@@ -145,31 +140,10 @@ namespace TimeTable
 			this.выходToolStripMenuItem.Text = "Выход";
 			this.выходToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
 			// 
-			// справкаToolStripMenuItem
-			// 
-			this.справкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.показатьToolStripMenuItem,
-            this.оПрограммеToolStripMenuItem});
-			this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-			this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-			this.справкаToolStripMenuItem.Text = "Справка";
-			// 
-			// показатьToolStripMenuItem
-			// 
-			this.показатьToolStripMenuItem.Name = "показатьToolStripMenuItem";
-			this.показатьToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-			this.показатьToolStripMenuItem.Text = "Показать";
-			// 
-			// оПрограммеToolStripMenuItem
-			// 
-			this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-			this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-			this.оПрограммеToolStripMenuItem.Text = "О программе";
-			// 
 			// Enter
 			// 
 			this.Enter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.Enter.Location = new System.Drawing.Point(796, 1);
+			this.Enter.Location = new System.Drawing.Point(1030, 1);
 			this.Enter.Name = "Enter";
 			this.Enter.Size = new System.Drawing.Size(75, 23);
 			this.Enter.TabIndex = 1;
@@ -185,12 +159,11 @@ namespace TimeTable
             this.Open,
             this.toolStripSeparator3,
             this.Sort,
-            this.Search,
             this.toolStripSeparator5,
             this.AddLesson});
 			this.ToolBar.Location = new System.Drawing.Point(0, 24);
 			this.ToolBar.Name = "ToolBar";
-			this.ToolBar.Size = new System.Drawing.Size(875, 25);
+			this.ToolBar.Size = new System.Drawing.Size(1109, 25);
 			this.ToolBar.TabIndex = 2;
 			this.ToolBar.Text = "toolStrip1";
 			// 
@@ -235,16 +208,6 @@ namespace TimeTable
 			this.Sort.Text = "Сортировка";
 			this.Sort.Click += new System.EventHandler(this.Sort_Click);
 			// 
-			// Search
-			// 
-			this.Search.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-			this.Search.BackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.Search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.Search.Font = new System.Drawing.Font("Segoe UI", 9F);
-			this.Search.Name = "Search";
-			this.Search.Size = new System.Drawing.Size(100, 25);
-			this.Search.Click += new System.EventHandler(this.Search_Click);
-			// 
 			// toolStripSeparator5
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
@@ -269,7 +232,7 @@ namespace TimeTable
 			this.Tables.Location = new System.Drawing.Point(0, 0);
 			this.Tables.Name = "Tables";
 			this.Tables.SelectedIndex = 0;
-			this.Tables.Size = new System.Drawing.Size(675, 430);
+			this.Tables.Size = new System.Drawing.Size(857, 558);
 			this.Tables.TabIndex = 3;
 			// 
 			// Table1
@@ -278,7 +241,7 @@ namespace TimeTable
 			this.Table1.Location = new System.Drawing.Point(4, 22);
 			this.Table1.Name = "Table1";
 			this.Table1.Padding = new System.Windows.Forms.Padding(3);
-			this.Table1.Size = new System.Drawing.Size(667, 404);
+			this.Table1.Size = new System.Drawing.Size(849, 532);
 			this.Table1.TabIndex = 0;
 			this.Table1.Text = "tabPage1";
 			this.Table1.UseVisualStyleBackColor = true;
@@ -289,7 +252,7 @@ namespace TimeTable
 			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dataGridView1.Location = new System.Drawing.Point(3, 3);
 			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(661, 398);
+			this.dataGridView1.Size = new System.Drawing.Size(843, 526);
 			this.dataGridView1.TabIndex = 0;
 			// 
 			// tabPage1
@@ -304,9 +267,9 @@ namespace TimeTable
 			// 
 			// StatusBar
 			// 
-			this.StatusBar.Location = new System.Drawing.Point(0, 479);
+			this.StatusBar.Location = new System.Drawing.Point(0, 607);
 			this.StatusBar.Name = "StatusBar";
-			this.StatusBar.Size = new System.Drawing.Size(875, 22);
+			this.StatusBar.Size = new System.Drawing.Size(1109, 22);
 			this.StatusBar.TabIndex = 4;
 			this.StatusBar.Text = "statusStrip1";
 			// 
@@ -324,8 +287,8 @@ namespace TimeTable
 			// splitContainer1.Panel2
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.Tables);
-			this.splitContainer1.Size = new System.Drawing.Size(875, 430);
-			this.splitContainer1.SplitterDistance = 196;
+			this.splitContainer1.Size = new System.Drawing.Size(1109, 558);
+			this.splitContainer1.SplitterDistance = 248;
 			this.splitContainer1.TabIndex = 5;
 			// 
 			// Pull
@@ -336,7 +299,7 @@ namespace TimeTable
 			this.Pull.ItemHeight = 16;
 			this.Pull.Location = new System.Drawing.Point(0, 0);
 			this.Pull.Name = "Pull";
-			this.Pull.Size = new System.Drawing.Size(196, 430);
+			this.Pull.Size = new System.Drawing.Size(248, 558);
 			this.Pull.TabIndex = 1;
 			// 
 			// treeView1
@@ -347,7 +310,7 @@ namespace TimeTable
 			this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.treeView1.Location = new System.Drawing.Point(0, 0);
 			this.treeView1.Name = "treeView1";
-			this.treeView1.Size = new System.Drawing.Size(196, 430);
+			this.treeView1.Size = new System.Drawing.Size(248, 558);
 			this.treeView1.TabIndex = 0;
 			// 
 			// Dipper
@@ -355,7 +318,7 @@ namespace TimeTable
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-			this.ClientSize = new System.Drawing.Size(875, 501);
+			this.ClientSize = new System.Drawing.Size(1109, 629);
 			this.Controls.Add(this.splitContainer1);
 			this.Controls.Add(this.StatusBar);
 			this.Controls.Add(this.ToolBar);
@@ -391,19 +354,15 @@ namespace TimeTable
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem печатьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem справкаToolStripMenuItem;
         new private System.Windows.Forms.Button Enter;
         private System.Windows.Forms.ToolStrip ToolBar;
         private System.Windows.Forms.TabControl Tables;
         private System.Windows.Forms.TabPage Table1;
         private System.Windows.Forms.StatusStrip StatusBar;
-        private System.Windows.Forms.ToolStripMenuItem показатьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton Create;
         private System.Windows.Forms.ToolStripButton Open;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton Sort;
-        private System.Windows.Forms.ToolStripTextBox Search;
         private System.Windows.Forms.ToolStripButton AddLesson;
 		private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TreeView treeView1;

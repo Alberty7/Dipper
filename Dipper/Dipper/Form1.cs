@@ -84,9 +84,5 @@ namespace TimeTable {
 				}
 			}
 		}
-
-		private void Search_Click(object sender, EventArgs e) {
-
-		}
 	}
 }
