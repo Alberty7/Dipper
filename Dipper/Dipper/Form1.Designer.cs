@@ -52,8 +52,6 @@ namespace TimeTable
 			this.Pull = new System.Windows.Forms.ListBox();
 			this.treeView1 = new System.Windows.Forms.TreeView();
 			this.Tables = new System.Windows.Forms.TabControl();
-			this.Table1 = new System.Windows.Forms.TabPage();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 			this.Menu.SuspendLayout();
@@ -62,9 +60,6 @@ namespace TimeTable
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
-			this.Tables.SuspendLayout();
-			this.Table1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// Menu
@@ -264,7 +259,6 @@ namespace TimeTable
 			// 
 			// Tables
 			// 
-			this.Tables.Controls.Add(this.Table1);
 			this.Tables.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.Tables.HotTrack = true;
 			this.Tables.Location = new System.Drawing.Point(0, 0);
@@ -272,31 +266,6 @@ namespace TimeTable
 			this.Tables.SelectedIndex = 0;
 			this.Tables.Size = new System.Drawing.Size(857, 580);
 			this.Tables.TabIndex = 3;
-			// 
-			// Table1
-			// 
-			this.Table1.Controls.Add(this.dataGridView1);
-			this.Table1.Location = new System.Drawing.Point(4, 22);
-			this.Table1.Name = "Table1";
-			this.Table1.Padding = new System.Windows.Forms.Padding(3);
-			this.Table1.Size = new System.Drawing.Size(849, 554);
-			this.Table1.TabIndex = 0;
-			this.Table1.Text = "Расписание";
-			this.Table1.UseVisualStyleBackColor = true;
-			// 
-			// dataGridView1
-			// 
-			this.dataGridView1.AllowDrop = true;
-			this.dataGridView1.AllowUserToAddRows = false;
-			this.dataGridView1.AllowUserToDeleteRows = false;
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(843, 548);
-			this.dataGridView1.TabIndex = 0;
-			this.dataGridView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.dataGridView1_DragDrop);
-			this.dataGridView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.dataGridView1_DragEnter);
 			// 
 			// openFileDialog1
 			// 
@@ -323,9 +292,6 @@ namespace TimeTable
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
-			this.Tables.ResumeLayout(false);
-			this.Table1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -354,10 +320,9 @@ namespace TimeTable
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
 		private System.Windows.Forms.ListBox Pull;
-		private System.Windows.Forms.TabControl Tables;
-		private System.Windows.Forms.TabPage Table1;
 		private System.Windows.Forms.OpenFileDialog openFileDialog1;
-		public System.Windows.Forms.DataGridView dataGridView1;
+		//public System.Windows.Forms.DataGridView dataGridView1;
 		private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+		public System.Windows.Forms.TabControl Tables;
 	}
 }

@@ -84,7 +84,9 @@ namespace TimeTable
                     filter.tch.AddRange(Teacher.SelectedItems.Cast<string>());
                 }
 
-                JsonDataBase.Sort(filter, ref main.dataGridView1);
+                var item = (DataGridView)main.Tables.SelectedTab.Controls[0];
+
+                JsonDataBase.Sort(filter, ref item);
                 DialogResult = DialogResult.OK;
             }
             else {

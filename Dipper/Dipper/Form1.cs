@@ -14,7 +14,18 @@ namespace TimeTable {
 		public Dipper() {
 			InitializeComponent();
 
-			JsonDataBase.LoadTemplate(ref dataGridView1);
+			for(int i = 1; i<=4; i++) {
+				TabPage temp = new TabPage($"Курс {i}.xlsx");
+				Tables.TabPages.Add(temp);
+				DataGridView dvg = new DataGridView() { Dock = DockStyle.Fill };
+				dvg.AllowDrop = true;
+				dvg.DragDrop += new DragEventHandler(this.dataGridView1_DragDrop);
+				dvg.DragEnter += new DragEventHandler(this.dataGridView1_DragEnter);
+				temp.Controls.Add(dvg);
+				JsonDataBase.LoadTemplate(ref dvg, $@"..\Template{i}.xlsx");
+			}
+
+			//JsonDataBase.LoadTemplate(ref dataGridView1);
 
 			Pull.DataSource = JsonDataBase.PullOfSublect.ToList();
 		}
@@ -32,11 +43,14 @@ namespace TimeTable {
 
 		private void ВыходToolStripMenuItem_Click(object sender, EventArgs e) {
 			JsonDataBase.Save();
-			saveFileDialog1.Filter = "XLS files (*.xls, *.xlt)|*.xls;*.xlt|XLSX files (*.xlsx, *.xlsm, *.xltx, *.xltm)|*.xlsx;*.xlsm;*.xltx;*.xltm|ODS files (*.ods, *.ots)|*.ods;*.ots|CSV files (*.csv, *.tsv)|*.csv;*.tsv|HTML files (*.html, *.htm)|*.html;*.htm";
-			saveFileDialog1.FilterIndex = 2;
+			for(int i = 0; i < Tables.TabPages.Count; i++) {
+				saveFileDialog1.Filter = "XLS files (*.xls, *.xlt)|*.xls;*.xlt|XLSX files (*.xlsx, *.xlsm, *.xltx, *.xltm)|*.xlsx;*.xlsm;*.xltx;*.xltm|ODS files (*.ods, *.ots)|*.ods;*.ots|CSV files (*.csv, *.tsv)|*.csv;*.tsv|HTML files (*.html, *.htm)|*.html;*.htm";
+				saveFileDialog1.FilterIndex = 2;
 
-			if(saveFileDialog1.ShowDialog() == DialogResult.OK) {
-				JsonDataBase.SaveTemplate(ref dataGridView1, saveFileDialog1.FileName);
+				if(saveFileDialog1.ShowDialog() == DialogResult.OK) {
+					var item = (DataGridView)Tables.TabPages[i].Controls[0];
+					JsonDataBase.SaveTemplate(ref item, saveFileDialog1.FileName);
+				}
 			}
 
 
@@ -70,29 +84,33 @@ namespace TimeTable {
 
 		private void dataGridView1_DragDrop(object sender, DragEventArgs e) {
 			if(Logined) {
-				Point clientPoint = dataGridView1.PointToClient(new Point(e.X, e.Y));
-				var hit = dataGridView1.HitTest(clientPoint.X, clientPoint.Y);
+				var dgv = (DataGridView)Tables.SelectedTab.Controls[0];
+				Point clientPoint = dgv.PointToClient(new Point(e.X, e.Y));
+				var hit = dgv.HitTest(clientPoint.X, clientPoint.Y);
 
 				if((hit.ColumnIndex > -1) && (hit.RowIndex > -1)) {
 					DialogResult var = DialogResult.Yes;
 					Subject item = e.Data.GetData(DataFormats.Serializable, true) as Subject;
-					for(int i = 2; i < dataGridView1.ColumnCount; i++) {
-						if((dataGridView1[i, hit.RowIndex].Value != null) && (item.Teacher == ((Subject)dataGridView1[i, hit.RowIndex].Value).Teacher)) {
-							var = MessageBox.Show($"{item.Teacher} уже ведет {((Subject)dataGridView1[i, hit.RowIndex].Value).LessonName} у {dataGridView1.Columns[i].HeaderText} - {dataGridView1[i, 0].Value} в это время.\n Продолжить в любом случае?", "Ошибка составления расписания", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-							if(var == DialogResult.No) {
-								break;
+					for(int g = 0; g < 4; g++) {
+						var DVG = (DataGridView)Tables.TabPages[g].Controls[0];
+						for(int i = 2; i < DVG.ColumnCount; i++) {
+							if((DVG[i, hit.RowIndex].Value != null) && (item.Teacher == ((Subject)DVG[i, hit.RowIndex].Value).Teacher)) {
+								var = MessageBox.Show($"{item.Teacher} уже ведет {((Subject)DVG[i, hit.RowIndex].Value).LessonName} у {DVG.Columns[i].HeaderText} - {DVG[i, 0].Value} в это время.\n Продолжить в любом случае?", "Ошибка составления расписания", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+								if(var == DialogResult.No) {
+									break;
+								}
 							}
 						}
 					}
 
 					try {
 						if(var == DialogResult.Yes) {
-							dataGridView1.CurrentCell = dataGridView1[hit.ColumnIndex, hit.RowIndex];
-							dataGridView1.CurrentCell.Value = new Lesson(item,
-															JsonDataBase.Week[dataGridView1[0, hit.RowIndex].Value.ToString()][Convert.ToInt32(dataGridView1[1, hit.RowIndex].Value)].Item1,
-															JsonDataBase.Week[dataGridView1[0, hit.RowIndex].Value.ToString()][Convert.ToInt32(dataGridView1[1, hit.RowIndex].Value)].Item2,
-															 dataGridView1[hit.ColumnIndex, 0].Value.ToString(),
-															 Convert.ToInt32(dataGridView1.Columns[hit.ColumnIndex].HeaderText));
+							dgv.CurrentCell = dgv[hit.ColumnIndex, hit.RowIndex];
+							dgv.CurrentCell.Value = new Lesson(item,
+															JsonDataBase.Week[dgv[0, hit.RowIndex].Value.ToString()][Convert.ToInt32(dgv[1, hit.RowIndex].Value)].Item1,
+															JsonDataBase.Week[dgv[0, hit.RowIndex].Value.ToString()][Convert.ToInt32(dgv[1, hit.RowIndex].Value)].Item2,
+															 dgv[hit.ColumnIndex, 0].Value.ToString(),
+															 Convert.ToInt32(dgv.Columns[hit.ColumnIndex].HeaderText));
 						}
 					}
 					catch(Exception A) {
@@ -136,8 +154,11 @@ namespace TimeTable {
 		private void открытьToolStripMenuItem_Click(object sender, EventArgs e) => Open_Click(sender, e);
 
 		private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e) {
-			JsonDataBase.SaveTemplate(ref dataGridView1);
-			for(int i = 1; i < Tables.TabPages.Count; i++) {
+			for(int i = 1; i <= 4; i++) {
+				var item = (DataGridView)Tables.TabPages[i].Controls[0];
+				JsonDataBase.SaveTemplate(ref item, $@"..\Template{i}.xlsx");
+			}
+			for(int i = 5; i < Tables.TabPages.Count; i++) {
 				var item = (DataGridView)Tables.TabPages[i].Controls[0];
 				JsonDataBase.SaveTemplate(ref item, Tables.TabPages[i].Text);
 			}
