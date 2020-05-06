@@ -49,22 +49,22 @@ namespace TimeTable
 			this.Sort = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
 			this.AddLesson = new System.Windows.Forms.ToolStripButton();
-			this.StatusBar = new System.Windows.Forms.StatusStrip();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.Pull = new System.Windows.Forms.ListBox();
 			this.treeView1 = new System.Windows.Forms.TreeView();
+			this.Tables = new System.Windows.Forms.TabControl();
 			this.Table1 = new System.Windows.Forms.TabPage();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.Tables = new System.Windows.Forms.TabControl();
+			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			this.Menu.SuspendLayout();
 			this.ToolBar.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
+			this.Tables.SuspendLayout();
 			this.Table1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-			this.Tables.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// Menu
@@ -190,6 +190,7 @@ namespace TimeTable
 			this.Open.Name = "Open";
 			this.Open.Size = new System.Drawing.Size(23, 22);
 			this.Open.Text = "Открыть";
+			this.Open.Click += new System.EventHandler(this.Open_Click);
 			// 
 			// toolStripSeparator3
 			// 
@@ -223,14 +224,6 @@ namespace TimeTable
 			this.AddLesson.Text = "Добавить предмет";
 			this.AddLesson.Click += new System.EventHandler(this.AddLesson_Click);
 			// 
-			// StatusBar
-			// 
-			this.StatusBar.Location = new System.Drawing.Point(0, 607);
-			this.StatusBar.Name = "StatusBar";
-			this.StatusBar.Size = new System.Drawing.Size(1109, 22);
-			this.StatusBar.TabIndex = 4;
-			this.StatusBar.Text = "statusStrip1";
-			// 
 			// splitContainer1
 			// 
 			this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -245,7 +238,7 @@ namespace TimeTable
 			// splitContainer1.Panel2
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.Tables);
-			this.splitContainer1.Size = new System.Drawing.Size(1109, 558);
+			this.splitContainer1.Size = new System.Drawing.Size(1109, 580);
 			this.splitContainer1.SplitterDistance = 248;
 			this.splitContainer1.TabIndex = 5;
 			// 
@@ -257,7 +250,7 @@ namespace TimeTable
 			this.Pull.ItemHeight = 16;
 			this.Pull.Location = new System.Drawing.Point(0, 0);
 			this.Pull.Name = "Pull";
-			this.Pull.Size = new System.Drawing.Size(248, 558);
+			this.Pull.Size = new System.Drawing.Size(248, 580);
 			this.Pull.TabIndex = 1;
 			this.Pull.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Pull_MouseDown);
 			// 
@@ -269,8 +262,19 @@ namespace TimeTable
 			this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.treeView1.Location = new System.Drawing.Point(0, 0);
 			this.treeView1.Name = "treeView1";
-			this.treeView1.Size = new System.Drawing.Size(248, 558);
+			this.treeView1.Size = new System.Drawing.Size(248, 580);
 			this.treeView1.TabIndex = 0;
+			// 
+			// Tables
+			// 
+			this.Tables.Controls.Add(this.Table1);
+			this.Tables.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.Tables.HotTrack = true;
+			this.Tables.Location = new System.Drawing.Point(0, 0);
+			this.Tables.Name = "Tables";
+			this.Tables.SelectedIndex = 0;
+			this.Tables.Size = new System.Drawing.Size(857, 580);
+			this.Tables.TabIndex = 3;
 			// 
 			// Table1
 			// 
@@ -278,7 +282,7 @@ namespace TimeTable
 			this.Table1.Location = new System.Drawing.Point(4, 22);
 			this.Table1.Name = "Table1";
 			this.Table1.Padding = new System.Windows.Forms.Padding(3);
-			this.Table1.Size = new System.Drawing.Size(849, 532);
+			this.Table1.Size = new System.Drawing.Size(849, 554);
 			this.Table1.TabIndex = 0;
 			this.Table1.Text = "Расписание";
 			this.Table1.UseVisualStyleBackColor = true;
@@ -292,20 +296,14 @@ namespace TimeTable
 			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dataGridView1.Location = new System.Drawing.Point(3, 3);
 			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(843, 526);
+			this.dataGridView1.Size = new System.Drawing.Size(843, 548);
 			this.dataGridView1.TabIndex = 0;
 			this.dataGridView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.dataGridView1_DragDrop);
 			this.dataGridView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.dataGridView1_DragEnter);
 			// 
-			// Tables
+			// openFileDialog1
 			// 
-			this.Tables.Controls.Add(this.Table1);
-			this.Tables.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.Tables.Location = new System.Drawing.Point(0, 0);
-			this.Tables.Name = "Tables";
-			this.Tables.SelectedIndex = 0;
-			this.Tables.Size = new System.Drawing.Size(857, 558);
-			this.Tables.TabIndex = 3;
+			this.openFileDialog1.FileName = "openFileDialog1";
 			// 
 			// Dipper
 			// 
@@ -314,7 +312,6 @@ namespace TimeTable
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.ClientSize = new System.Drawing.Size(1109, 629);
 			this.Controls.Add(this.splitContainer1);
-			this.Controls.Add(this.StatusBar);
 			this.Controls.Add(this.ToolBar);
 			this.Controls.Add(this.Enter);
 			this.Controls.Add(this.Menu);
@@ -329,9 +326,9 @@ namespace TimeTable
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
+			this.Tables.ResumeLayout(false);
 			this.Table1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-			this.Tables.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -351,7 +348,6 @@ namespace TimeTable
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         new private System.Windows.Forms.Button Enter;
         private System.Windows.Forms.ToolStrip ToolBar;
-        private System.Windows.Forms.StatusStrip StatusBar;
         private System.Windows.Forms.ToolStripButton Create;
         private System.Windows.Forms.ToolStripButton Open;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
@@ -365,5 +361,6 @@ namespace TimeTable
 		private System.Windows.Forms.TabControl Tables;
 		private System.Windows.Forms.TabPage Table1;
 		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.OpenFileDialog openFileDialog1;
 	}
 }

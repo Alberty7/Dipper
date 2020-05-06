@@ -62,7 +62,7 @@
 			// FirstName
 			// 
 			this.FirstName.ForeColor = System.Drawing.SystemColors.WindowFrame;
-			this.FirstName.Location = new System.Drawing.Point(18, 57);
+			this.FirstName.Location = new System.Drawing.Point(18, 31);
 			this.FirstName.Name = "FirstName";
 			this.FirstName.Size = new System.Drawing.Size(100, 20);
 			this.FirstName.TabIndex = 1;
@@ -72,7 +72,7 @@
 			// LastName
 			// 
 			this.LastName.ForeColor = System.Drawing.SystemColors.WindowFrame;
-			this.LastName.Location = new System.Drawing.Point(18, 31);
+			this.LastName.Location = new System.Drawing.Point(18, 57);
 			this.LastName.Name = "LastName";
 			this.LastName.Size = new System.Drawing.Size(100, 20);
 			this.LastName.TabIndex = 0;

@@ -40,13 +40,12 @@ namespace TimeTable
 
         private void SortingDialog_Load(object sender, EventArgs e) {
             main = this.Owner as Dipper;
-            Course.DataSource = main.Courses.Keys.ToList();
-            
-            Groupe.DataSource = main.Groups.Keys.ToList();
-            DayWeek.DataSource = main.Week.Keys.ToList();
+            Course.DataSource = JsonDataBase.Courses.Keys.ToList();            
+            Groupe.DataSource = JsonDataBase.Groups.Keys.ToList();
+            DayWeek.DataSource = JsonDataBase.Week.Keys.ToList();
             List<DateTime> list1 = new List<DateTime>();
             List<DateTime> list2 = new List<DateTime>();
-            foreach(var item in main.Week["Понедельник"]) {
+            foreach(var item in JsonDataBase.Week["Понедельник"]) {
                 list1.Add(item.Item1);
                 list2.Add(item.Item2);
             }
@@ -56,8 +55,8 @@ namespace TimeTable
             End.DataSource = list2;
             End.FormattingEnabled = true;
             End.FormatString = "HH:mm";
-            Subject.DataSource = main.PullOfSublect.ToList();
-            Teacher.DataSource = main.Teachers.Keys.ToList();
+            Subject.DataSource = JsonDataBase.PullOfSublect.ToList();
+            Teacher.DataSource = JsonDataBase.Teachers.Keys.ToList();
         }
     }
 }

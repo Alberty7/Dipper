@@ -36,19 +36,19 @@
 			this.isDayOfWeekSotrting = new System.Windows.Forms.CheckBox();
 			this.button1 = new System.Windows.Forms.Button();
 			this.groupBoxDay = new System.Windows.Forms.GroupBox();
-			this.groupBoxTeacher = new System.Windows.Forms.GroupBox();
-			this.groupBoxGroup = new System.Windows.Forms.GroupBox();
-			this.groupBoxSubject = new System.Windows.Forms.GroupBox();
-			this.Time = new System.Windows.Forms.GroupBox();
-			this.groupBoxCourse = new System.Windows.Forms.GroupBox();
-			this.button2 = new System.Windows.Forms.Button();
-			this.Course = new System.Windows.Forms.ListBox();
-			this.Groupe = new System.Windows.Forms.ListBox();
 			this.DayWeek = new System.Windows.Forms.ListBox();
+			this.groupBoxTeacher = new System.Windows.Forms.GroupBox();
+			this.Teacher = new System.Windows.Forms.ListBox();
+			this.groupBoxGroup = new System.Windows.Forms.GroupBox();
 			this.Subject = new System.Windows.Forms.ListBox();
+			this.groupBoxSubject = new System.Windows.Forms.GroupBox();
+			this.Groupe = new System.Windows.Forms.ListBox();
+			this.Time = new System.Windows.Forms.GroupBox();
 			this.End = new System.Windows.Forms.ComboBox();
 			this.Start = new System.Windows.Forms.ComboBox();
-			this.Teacher = new System.Windows.Forms.ListBox();
+			this.groupBoxCourse = new System.Windows.Forms.GroupBox();
+			this.Course = new System.Windows.Forms.ListBox();
+			this.button2 = new System.Windows.Forms.Button();
 			this.groupBoxDay.SuspendLayout();
 			this.groupBoxTeacher.SuspendLayout();
 			this.groupBoxGroup.SuspendLayout();
@@ -149,6 +149,15 @@
 			this.groupBoxDay.TabIndex = 7;
 			this.groupBoxDay.TabStop = false;
 			// 
+			// DayWeek
+			// 
+			this.DayWeek.FormattingEnabled = true;
+			this.DayWeek.Location = new System.Drawing.Point(6, 12);
+			this.DayWeek.Name = "DayWeek";
+			this.DayWeek.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+			this.DayWeek.Size = new System.Drawing.Size(330, 121);
+			this.DayWeek.TabIndex = 3;
+			// 
 			// groupBoxTeacher
 			// 
 			this.groupBoxTeacher.Controls.Add(this.Teacher);
@@ -157,6 +166,15 @@
 			this.groupBoxTeacher.Size = new System.Drawing.Size(344, 139);
 			this.groupBoxTeacher.TabIndex = 8;
 			this.groupBoxTeacher.TabStop = false;
+			// 
+			// Teacher
+			// 
+			this.Teacher.FormattingEnabled = true;
+			this.Teacher.Location = new System.Drawing.Point(6, 12);
+			this.Teacher.Name = "Teacher";
+			this.Teacher.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+			this.Teacher.Size = new System.Drawing.Size(330, 121);
+			this.Teacher.TabIndex = 3;
 			// 
 			// groupBoxGroup
 			// 
@@ -167,6 +185,15 @@
 			this.groupBoxGroup.TabIndex = 10;
 			this.groupBoxGroup.TabStop = false;
 			// 
+			// Subject
+			// 
+			this.Subject.FormattingEnabled = true;
+			this.Subject.Location = new System.Drawing.Point(6, 12);
+			this.Subject.Name = "Subject";
+			this.Subject.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+			this.Subject.Size = new System.Drawing.Size(330, 121);
+			this.Subject.TabIndex = 2;
+			// 
 			// groupBoxSubject
 			// 
 			this.groupBoxSubject.Controls.Add(this.Groupe);
@@ -175,6 +202,15 @@
 			this.groupBoxSubject.Size = new System.Drawing.Size(344, 139);
 			this.groupBoxSubject.TabIndex = 9;
 			this.groupBoxSubject.TabStop = false;
+			// 
+			// Groupe
+			// 
+			this.Groupe.FormattingEnabled = true;
+			this.Groupe.Location = new System.Drawing.Point(6, 12);
+			this.Groupe.Name = "Groupe";
+			this.Groupe.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+			this.Groupe.Size = new System.Drawing.Size(330, 121);
+			this.Groupe.TabIndex = 2;
 			// 
 			// Time
 			// 
@@ -185,58 +221,6 @@
 			this.Time.Size = new System.Drawing.Size(344, 139);
 			this.Time.TabIndex = 12;
 			this.Time.TabStop = false;
-			// 
-			// groupBoxCourse
-			// 
-			this.groupBoxCourse.Controls.Add(this.Course);
-			this.groupBoxCourse.Location = new System.Drawing.Point(12, 41);
-			this.groupBoxCourse.Name = "groupBoxCourse";
-			this.groupBoxCourse.Size = new System.Drawing.Size(344, 139);
-			this.groupBoxCourse.TabIndex = 11;
-			this.groupBoxCourse.TabStop = false;
-			// 
-			// button2
-			// 
-			this.button2.AutoSize = true;
-			this.button2.Location = new System.Drawing.Point(886, 360);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(82, 23);
-			this.button2.TabIndex = 13;
-			this.button2.Text = "Отмена";
-			this.button2.UseVisualStyleBackColor = true;
-			this.button2.Click += new System.EventHandler(this.button2_Click);
-			// 
-			// Course
-			// 
-			this.Course.FormattingEnabled = true;
-			this.Course.Location = new System.Drawing.Point(8, 12);
-			this.Course.Name = "Course";
-			this.Course.Size = new System.Drawing.Size(330, 121);
-			this.Course.TabIndex = 1;
-			// 
-			// Groupe
-			// 
-			this.Groupe.FormattingEnabled = true;
-			this.Groupe.Location = new System.Drawing.Point(6, 12);
-			this.Groupe.Name = "Groupe";
-			this.Groupe.Size = new System.Drawing.Size(330, 121);
-			this.Groupe.TabIndex = 2;
-			// 
-			// DayWeek
-			// 
-			this.DayWeek.FormattingEnabled = true;
-			this.DayWeek.Location = new System.Drawing.Point(6, 12);
-			this.DayWeek.Name = "DayWeek";
-			this.DayWeek.Size = new System.Drawing.Size(330, 121);
-			this.DayWeek.TabIndex = 3;
-			// 
-			// Subject
-			// 
-			this.Subject.FormattingEnabled = true;
-			this.Subject.Location = new System.Drawing.Point(6, 12);
-			this.Subject.Name = "Subject";
-			this.Subject.Size = new System.Drawing.Size(330, 121);
-			this.Subject.TabIndex = 2;
 			// 
 			// End
 			// 
@@ -258,13 +242,34 @@
 			this.Start.TabIndex = 7;
 			this.Start.ValueMember = "StartLessonHour";
 			// 
-			// Teacher
+			// groupBoxCourse
 			// 
-			this.Teacher.FormattingEnabled = true;
-			this.Teacher.Location = new System.Drawing.Point(6, 12);
-			this.Teacher.Name = "Teacher";
-			this.Teacher.Size = new System.Drawing.Size(330, 121);
-			this.Teacher.TabIndex = 3;
+			this.groupBoxCourse.Controls.Add(this.Course);
+			this.groupBoxCourse.Location = new System.Drawing.Point(12, 41);
+			this.groupBoxCourse.Name = "groupBoxCourse";
+			this.groupBoxCourse.Size = new System.Drawing.Size(344, 139);
+			this.groupBoxCourse.TabIndex = 11;
+			this.groupBoxCourse.TabStop = false;
+			// 
+			// Course
+			// 
+			this.Course.FormattingEnabled = true;
+			this.Course.Location = new System.Drawing.Point(8, 12);
+			this.Course.Name = "Course";
+			this.Course.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+			this.Course.Size = new System.Drawing.Size(330, 121);
+			this.Course.TabIndex = 1;
+			// 
+			// button2
+			// 
+			this.button2.AutoSize = true;
+			this.button2.Location = new System.Drawing.Point(886, 360);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(82, 23);
+			this.button2.TabIndex = 13;
+			this.button2.Text = "Отмена";
+			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
 			// SortingDialog
 			// 

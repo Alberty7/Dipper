@@ -75,8 +75,8 @@ namespace TimeTable
         }
 
         private void OK_Click(object sender, EventArgs e) {
-            FIO[0] = LastName.Text;
-            FIO[1] = FirstName.Text;
+            FIO[0] = FirstName.Text;
+            FIO[1] = LastName.Text;
             FIO[2] = FatherName.Text;
             SubjectNameString = SubjectName.Text; 
             DialogResult = DialogResult.OK;
