@@ -60,6 +60,8 @@
 			// isTeacherSorting
 			// 
 			this.isTeacherSorting.Appearance = System.Windows.Forms.Appearance.Button;
+			this.isTeacherSorting.Checked = true;
+			this.isTeacherSorting.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.isTeacherSorting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.isTeacherSorting.Location = new System.Drawing.Point(712, 186);
 			this.isTeacherSorting.Name = "isTeacherSorting";
@@ -67,11 +69,13 @@
 			this.isTeacherSorting.TabIndex = 0;
 			this.isTeacherSorting.Text = "Сортировать по преподавателю";
 			this.isTeacherSorting.UseVisualStyleBackColor = true;
-			this.isTeacherSorting.CheckedChanged += new System.EventHandler(this.isTeacherSorting_CheckedChanged);
+			this.isTeacherSorting.CheckedChanged += new System.EventHandler(this.IsTeacherSorting_CheckedChanged);
 			// 
 			// isSubjectSorting
 			// 
 			this.isSubjectSorting.Appearance = System.Windows.Forms.Appearance.Button;
+			this.isSubjectSorting.Checked = true;
+			this.isSubjectSorting.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.isSubjectSorting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.isSubjectSorting.Location = new System.Drawing.Point(362, 186);
 			this.isSubjectSorting.Name = "isSubjectSorting";
@@ -79,11 +83,13 @@
 			this.isSubjectSorting.TabIndex = 1;
 			this.isSubjectSorting.Text = "Сортировать по предмету";
 			this.isSubjectSorting.UseVisualStyleBackColor = true;
-			this.isSubjectSorting.CheckedChanged += new System.EventHandler(this.isSubjectSorting_CheckedChanged);
+			this.isSubjectSorting.CheckedChanged += new System.EventHandler(this.IsSubjectSorting_CheckedChanged);
 			// 
 			// isGroupSorting
 			// 
 			this.isGroupSorting.Appearance = System.Windows.Forms.Appearance.Button;
+			this.isGroupSorting.Checked = true;
+			this.isGroupSorting.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.isGroupSorting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.isGroupSorting.Location = new System.Drawing.Point(362, 12);
 			this.isGroupSorting.Name = "isGroupSorting";
@@ -91,11 +97,13 @@
 			this.isGroupSorting.TabIndex = 2;
 			this.isGroupSorting.Text = "Сортировать по группе";
 			this.isGroupSorting.UseVisualStyleBackColor = true;
-			this.isGroupSorting.CheckedChanged += new System.EventHandler(this.isGroupSorting_CheckedChanged);
+			this.isGroupSorting.CheckedChanged += new System.EventHandler(this.IsGroupSorting_CheckedChanged);
 			// 
 			// isCourseSorting
 			// 
 			this.isCourseSorting.Appearance = System.Windows.Forms.Appearance.Button;
+			this.isCourseSorting.Checked = true;
+			this.isCourseSorting.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.isCourseSorting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.isCourseSorting.Location = new System.Drawing.Point(12, 12);
 			this.isCourseSorting.Name = "isCourseSorting";
@@ -103,11 +111,13 @@
 			this.isCourseSorting.TabIndex = 3;
 			this.isCourseSorting.Text = "Сортировать по курсу";
 			this.isCourseSorting.UseVisualStyleBackColor = true;
-			this.isCourseSorting.CheckedChanged += new System.EventHandler(this.isCourseSorting_CheckedChanged);
+			this.isCourseSorting.CheckedChanged += new System.EventHandler(this.IsCourseSorting_CheckedChanged);
 			// 
 			// isTimeSorting
 			// 
 			this.isTimeSorting.Appearance = System.Windows.Forms.Appearance.Button;
+			this.isTimeSorting.Checked = true;
+			this.isTimeSorting.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.isTimeSorting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.isTimeSorting.Location = new System.Drawing.Point(12, 186);
 			this.isTimeSorting.Name = "isTimeSorting";
@@ -115,11 +125,13 @@
 			this.isTimeSorting.TabIndex = 4;
 			this.isTimeSorting.Text = "Сортировать по времени";
 			this.isTimeSorting.UseVisualStyleBackColor = true;
-			this.isTimeSorting.CheckedChanged += new System.EventHandler(this.isTimeSorting_CheckedChanged);
+			this.isTimeSorting.CheckedChanged += new System.EventHandler(this.IsTimeSorting_CheckedChanged);
 			// 
 			// isDayOfWeekSotrting
 			// 
 			this.isDayOfWeekSotrting.Appearance = System.Windows.Forms.Appearance.Button;
+			this.isDayOfWeekSotrting.Checked = true;
+			this.isDayOfWeekSotrting.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.isDayOfWeekSotrting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.isDayOfWeekSotrting.Location = new System.Drawing.Point(712, 12);
 			this.isDayOfWeekSotrting.Name = "isDayOfWeekSotrting";
@@ -127,7 +139,7 @@
 			this.isDayOfWeekSotrting.TabIndex = 5;
 			this.isDayOfWeekSotrting.Text = "Сортировать по дню недели";
 			this.isDayOfWeekSotrting.UseVisualStyleBackColor = true;
-			this.isDayOfWeekSotrting.CheckedChanged += new System.EventHandler(this.isDayOfWeekSotrting_CheckedChanged);
+			this.isDayOfWeekSotrting.CheckedChanged += new System.EventHandler(this.IsDayOfWeekSotrting_CheckedChanged);
 			// 
 			// button1
 			// 

@@ -64,5 +64,5 @@ public class Lesson : Subject{
         }
     }
 
-    public override string ToString() => $"{LessonName}\n{Teacher}";
+    public override string ToString() => $"{LessonName}\t{Teacher}";
 }
