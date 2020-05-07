@@ -30,6 +30,7 @@ namespace TimeTable
         /// </summary>
         private void InitializeComponent()
         {
+			this.components = new System.ComponentModel.Container();
 			this.Menu = new System.Windows.Forms.MenuStrip();
 			this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.создатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,6 +51,8 @@ namespace TimeTable
 			this.AddLesson = new System.Windows.Forms.ToolStripButton();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.Pull = new System.Windows.Forms.ListBox();
+			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.удалитьПредметToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.treeView1 = new System.Windows.Forms.TreeView();
 			this.Tables = new System.Windows.Forms.TabControl();
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -60,6 +63,7 @@ namespace TimeTable
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
+			this.contextMenuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// Menu
@@ -89,45 +93,45 @@ namespace TimeTable
 			// создатьToolStripMenuItem
 			// 
 			this.создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
-			this.создатьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.создатьToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
 			this.создатьToolStripMenuItem.Text = "Создать";
 			this.создатьToolStripMenuItem.Click += new System.EventHandler(this.создатьToolStripMenuItem_Click);
 			// 
 			// открытьToolStripMenuItem
 			// 
 			this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-			this.открытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.открытьToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
 			this.открытьToolStripMenuItem.Text = "Открыть";
 			this.открытьToolStripMenuItem.Click += new System.EventHandler(this.открытьToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(151, 6);
 			// 
 			// сохранитьToolStripMenuItem
 			// 
 			this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-			this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
 			this.сохранитьToolStripMenuItem.Text = "Сохранить";
 			this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
 			// 
 			// сохранитьКакToolStripMenuItem
 			// 
 			this.сохранитьКакToolStripMenuItem.Name = "сохранитьКакToolStripMenuItem";
-			this.сохранитьКакToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.сохранитьКакToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
 			this.сохранитьКакToolStripMenuItem.Text = "Сохранить как";
 			this.сохранитьКакToolStripMenuItem.Click += new System.EventHandler(this.сохранитьКакToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator2
 			// 
 			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator2.Size = new System.Drawing.Size(151, 6);
 			// 
 			// выходToolStripMenuItem
 			// 
 			this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-			this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.выходToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
 			this.выходToolStripMenuItem.Text = "Выход";
 			this.выходToolStripMenuItem.Click += new System.EventHandler(this.ВыходToolStripMenuItem_Click);
 			// 
@@ -236,6 +240,7 @@ namespace TimeTable
 			// 
 			// Pull
 			// 
+			this.Pull.ContextMenuStrip = this.contextMenuStrip1;
 			this.Pull.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.Pull.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
 			this.Pull.FormattingEnabled = true;
@@ -243,8 +248,23 @@ namespace TimeTable
 			this.Pull.Location = new System.Drawing.Point(0, 0);
 			this.Pull.Name = "Pull";
 			this.Pull.Size = new System.Drawing.Size(248, 580);
+			this.Pull.Sorted = true;
 			this.Pull.TabIndex = 1;
 			this.Pull.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Pull_MouseDown);
+			this.Pull.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Pull_PreviewKeyDown);
+			// 
+			// contextMenuStrip1
+			// 
+			this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.удалитьПредметToolStripMenuItem});
+			this.contextMenuStrip1.Name = "contextMenuStrip1";
+			this.contextMenuStrip1.Size = new System.Drawing.Size(168, 26);
+			// 
+			// удалитьПредметToolStripMenuItem
+			// 
+			this.удалитьПредметToolStripMenuItem.Name = "удалитьПредметToolStripMenuItem";
+			this.удалитьПредметToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+			this.удалитьПредметToolStripMenuItem.Text = "Удалить предмет";
 			// 
 			// treeView1
 			// 
@@ -292,6 +312,7 @@ namespace TimeTable
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
+			this.contextMenuStrip1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -324,5 +345,7 @@ namespace TimeTable
 		//public System.Windows.Forms.DataGridView dataGridView1;
 		private System.Windows.Forms.SaveFileDialog saveFileDialog1;
 		public System.Windows.Forms.TabControl Tables;
+		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem удалитьПредметToolStripMenuItem;
 	}
 }

@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 
 using System.Drawing;
+using GemBox.Spreadsheet.Tables;
 
 namespace TimeTable {
 	public partial class Dipper : Form {
@@ -72,6 +73,15 @@ namespace TimeTable {
 						string teacher = $"{dialog.FIO[0]} {dialog.FIO[1].FirstCharToUpper()[0]}.{dialog.FIO[2].FirstCharToUpper()[0]}";
 						Subject temp = new Subject(dialog.SubjectNameString, teacher);
 						JsonDataBase.PullOfSublect.Add(temp);
+						Pull.DataSource = null;
+						Pull.Items.Add(temp);
+						Pull.DataSource = JsonDataBase.PullOfSublect.ToList();
+						if(!JsonDataBase.Teachers.ContainsKey(temp.Teacher)) {
+							JsonDataBase.Teachers.Add(temp.Teacher, new string[] { temp.LessonName });
+						}
+						else if(JsonDataBase.Teachers.ContainsKey(temp.Teacher) && !JsonDataBase.Teachers[temp.Teacher].Contains(temp.LessonName)) {
+							JsonDataBase.Teachers[temp.Teacher].Append(temp.LessonName);
+						}
 					}
 				}
 			}
@@ -114,7 +124,7 @@ namespace TimeTable {
 						}
 					}
 					catch(Exception A) {
-
+						Console.WriteLine(A.Message);
 					}
 				}
 			}
@@ -126,6 +136,7 @@ namespace TimeTable {
 		private void Pull_MouseDown(object sender, MouseEventArgs e) {
 			if(Logined)
 				Pull.DoDragDrop(Pull.SelectedItem, DragDropEffects.Scroll | DragDropEffects.Move | DragDropEffects.Copy);
+
 		}
 
 		private void dataGridView1_DragEnter(object sender, DragEventArgs e) {
@@ -154,11 +165,11 @@ namespace TimeTable {
 		private void открытьToolStripMenuItem_Click(object sender, EventArgs e) => Open_Click(sender, e);
 
 		private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e) {
-			for(int i = 1; i <= 4; i++) {
+			for(int i = 0; i < 4; i++) {
 				var item = (DataGridView)Tables.TabPages[i].Controls[0];
 				JsonDataBase.SaveTemplate(ref item, $@"..\Template{i}.xlsx");
 			}
-			for(int i = 5; i < Tables.TabPages.Count; i++) {
+			for(int i = 4; i < Tables.TabPages.Count; i++) {
 				var item = (DataGridView)Tables.TabPages[i].Controls[0];
 				JsonDataBase.SaveTemplate(ref item, Tables.TabPages[i].Text);
 			}
@@ -183,6 +194,16 @@ namespace TimeTable {
 			DataGridView dvg = new DataGridView() { Dock = DockStyle.Fill };
 			temp.Controls.Add(dvg);
 			JsonDataBase.LoadTemplate(ref dvg);
+		}
+
+		private void Pull_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+			Console.WriteLine(e.KeyCode);
+			if(Logined && (e.KeyCode == Keys.Delete)) {
+				Pull.DataSource = null;
+				JsonDataBase.PullOfSublect.Remove((Subject)Pull.SelectedItem);
+				Pull.Items.Remove(Pull.SelectedItem);
+				Pull.DataSource = JsonDataBase.PullOfSublect.ToList();
+			}
 		}
 	}
 
