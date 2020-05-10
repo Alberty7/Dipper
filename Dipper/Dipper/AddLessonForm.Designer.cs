@@ -56,26 +56,29 @@
 			this.FatherName.Name = "FatherName";
 			this.FatherName.Size = new System.Drawing.Size(100, 20);
 			this.FatherName.TabIndex = 2;
+			this.FatherName.Text = "Отчество";
 			this.FatherName.Enter += new System.EventHandler(this.FatherName_Enter);
 			this.FatherName.Leave += new System.EventHandler(this.FatherName_Leave);
 			// 
 			// FirstName
 			// 
 			this.FirstName.ForeColor = System.Drawing.SystemColors.WindowFrame;
-			this.FirstName.Location = new System.Drawing.Point(18, 57);
+			this.FirstName.Location = new System.Drawing.Point(18, 31);
 			this.FirstName.Name = "FirstName";
 			this.FirstName.Size = new System.Drawing.Size(100, 20);
-			this.FirstName.TabIndex = 1;
+			this.FirstName.TabIndex = 0;
+			this.FirstName.Text = "Фамилия";
 			this.FirstName.Enter += new System.EventHandler(this.FirstName_Enter);
 			this.FirstName.Leave += new System.EventHandler(this.FirstName_Leave);
 			// 
 			// LastName
 			// 
 			this.LastName.ForeColor = System.Drawing.SystemColors.WindowFrame;
-			this.LastName.Location = new System.Drawing.Point(18, 31);
+			this.LastName.Location = new System.Drawing.Point(18, 57);
 			this.LastName.Name = "LastName";
 			this.LastName.Size = new System.Drawing.Size(100, 20);
-			this.LastName.TabIndex = 0;
+			this.LastName.TabIndex = 1;
+			this.LastName.Text = "Имя";
 			this.LastName.Enter += new System.EventHandler(this.LastName_Enter);
 			this.LastName.Leave += new System.EventHandler(this.LastName_Leave);
 			// 
@@ -84,7 +87,7 @@
 			this.OK.Location = new System.Drawing.Point(185, 93);
 			this.OK.Name = "OK";
 			this.OK.Size = new System.Drawing.Size(75, 23);
-			this.OK.TabIndex = 6;
+			this.OK.TabIndex = 4;
 			this.OK.Text = "Принять";
 			this.OK.UseVisualStyleBackColor = true;
 			this.OK.Click += new System.EventHandler(this.OK_Click);
@@ -95,7 +98,8 @@
 			this.SubjectName.Location = new System.Drawing.Point(171, 43);
 			this.SubjectName.Name = "SubjectName";
 			this.SubjectName.Size = new System.Drawing.Size(100, 20);
-			this.SubjectName.TabIndex = 7;
+			this.SubjectName.TabIndex = 3;
+			this.SubjectName.Text = "Предмет";
 			this.SubjectName.Enter += new System.EventHandler(this.SubjectName_Enter);
 			this.SubjectName.Leave += new System.EventHandler(this.SubjectName_Leave);
 			// 

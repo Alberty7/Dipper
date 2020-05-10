@@ -15,28 +15,23 @@ namespace TimeTable
 {
     public partial class Password : Form
     {
-        private static string path = @"..\passwords.json";
-        private Dictionary<string, string> passwords;
         public Password()
         {
             Dipper main = this.Owner as Dipper;
             InitializeComponent();
             textBox1.PasswordChar = '*';
-            passwords = new Dictionary<string, string>();
-
-            passwords = JsonConvert.DeserializeObject<Dictionary<string, string>>(File.ReadAllText(path));
         }
         private void textBox1_TextChanged(object sender, EventArgs e) => (button1.Enabled, label2.Text) = new Regex(@"\W\s*").IsMatch(textBox1.Text) ? (false, "Пароль содержит недопустимые символы") : (true, "");
 
         private void button1_Click(object sender, EventArgs e)
         { 
-            if(!passwords.ContainsKey(textBox1.Text)) {
+            if(!JsonDataBase.Passwords.ContainsKey(textBox1.Text)) {
                 DialogResult = DialogResult.None;
                 MessageBox.Show("Неверный пароль");
             }
             else {
                 DialogResult = DialogResult.OK;
-                MessageBox.Show($"Добро пожаловть, {passwords[textBox1.Text]}");
+                MessageBox.Show($"Добро пожаловть, {JsonDataBase.Passwords[textBox1.Text]}");
             }
             Close();
         }

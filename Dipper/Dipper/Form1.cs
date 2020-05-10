@@ -4,46 +4,31 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using GemBox.Spreadsheet;
-using GemBox.Spreadsheet.WinFormsUtilities;
+
 using System.Drawing;
+using GemBox.Spreadsheet.Tables;
 
 namespace TimeTable {
 	public partial class Dipper : Form {
 		private bool Logined = false;
-		private static string pathToSubjects = @"..\subjects.json";
-		private static string pathToTeachers = @"..\teachers.json";
-		private static string pathToDayWeek = @"..\daysweek.json";
-		private static string pathToCourses = @"..\courses.json";
-		private static string pathToGroups = @"..\groups.json";
-		private static string pathToTimeTable = @"..\timetable.json";
-		private static string pathToTable = @"..\Template.xlsx";
-
-		private HashSet<Subject> PullOfSublect { get; set; }
-		private LinkedList<Lesson> TimeTable { get; set; }
-		private Dictionary<string, string[]> Teachers { get; set; }
-		private Dictionary<string, (DateTime, DateTime)[]> Week { get; set; }
-		private Dictionary<string, string[]> Courses { get; set; }
-		private Dictionary<string, string[]> Groups { get; set; }
 
 		public Dipper() {
 			InitializeComponent();
-			PullOfSublect = new HashSet<Subject>();
-			Teachers = new Dictionary<string, string[]>();
-			Week = new Dictionary<string, (DateTime, DateTime)[]>();
-			Courses = new Dictionary<string, string[]>();
-			Groups = new Dictionary<string, string[]>();
-			TimeTable = new LinkedList<Lesson>();
-			LoadTemplate();
 
-			PullOfSublect = JsonConvert.DeserializeObject<HashSet<Subject>>(File.ReadAllText(pathToSubjects));
-			//Teachers = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(File.ReadAllText(pathToTeachers));
-			Week = JsonConvert.DeserializeObject<Dictionary<string, (DateTime, DateTime)[]>>(File.ReadAllText(pathToDayWeek));
-			//Courses = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(File.ReadAllText(pathToCourses));
-			//Groups = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(File.ReadAllText(pathToGroups));
-			//TimeTable = JsonConvert.DeserializeObject<LinkedList<Lesson>>(File.ReadAllText(pathToTimeTable));
+			for(int i = 1; i<=4; i++) {
+				TabPage temp = new TabPage($"Курс {i}.xlsx");
+				Tables.TabPages.Add(temp);
+				DataGridView dvg = new DataGridView() { Dock = DockStyle.Fill };
+				dvg.AllowDrop = true;
+				dvg.DragDrop += new DragEventHandler(this.dataGridView1_DragDrop);
+				dvg.DragEnter += new DragEventHandler(this.dataGridView1_DragEnter);
+				temp.Controls.Add(dvg);
+				JsonDataBase.LoadTemplate(ref dvg, $@"..\Template{i}.xlsx");
+			}
 
-			Pull.DataSource = PullOfSublect.ToList();
+			//JsonDataBase.LoadTemplate(ref dataGridView1);
+
+			Pull.DataSource = JsonDataBase.PullOfSublect.ToList();
 		}
 
 		private void Enter_Click(object sender, EventArgs e) {
@@ -58,72 +43,183 @@ namespace TimeTable {
 
 
 		private void ВыходToolStripMenuItem_Click(object sender, EventArgs e) {
-			File.WriteAllText(pathToTimeTable, JsonConvert.SerializeObject(TimeTable));
-			File.WriteAllText(pathToGroups, JsonConvert.SerializeObject(Groups));
-			File.WriteAllText(pathToCourses, JsonConvert.SerializeObject(Courses));
-			File.WriteAllText(pathToTeachers, JsonConvert.SerializeObject(Teachers));
-			File.WriteAllText(pathToSubjects, JsonConvert.SerializeObject(PullOfSublect));
-			File.WriteAllText(pathToDayWeek, JsonConvert.SerializeObject(Week));
+			JsonDataBase.Save();
+			for(int i = 0; i < Tables.TabPages.Count; i++) {
+				saveFileDialog1.Filter = "XLS files (*.xls, *.xlt)|*.xls;*.xlt|XLSX files (*.xlsx, *.xlsm, *.xltx, *.xltm)|*.xlsx;*.xlsm;*.xltx;*.xltm|ODS files (*.ods, *.ots)|*.ods;*.ots|CSV files (*.csv, *.tsv)|*.csv;*.tsv|HTML files (*.html, *.htm)|*.html;*.htm";
+				saveFileDialog1.FilterIndex = 2;
+
+				if(saveFileDialog1.ShowDialog() == DialogResult.OK) {
+					var item = (DataGridView)Tables.TabPages[i].Controls[0];
+					JsonDataBase.SaveTemplate(ref item, saveFileDialog1.FileName);
+				}
+			}
+
 
 			Environment.Exit(0);
 		}
 
 		private void Sort_Click(object sender, EventArgs e) {
-			SortingDialog dialog = new SortingDialog();
+			SortingDialog dialog = new SortingDialog {
+				Owner = this
+			};
 			dialog.ShowDialog();
 		}
 
 		private void AddLesson_Click(object sender, EventArgs e) {
-			using(AddLessonForm dialog = new AddLessonForm()) {
-				dialog.Owner = this;
-				if(dialog.ShowDialog() == DialogResult.OK) {
-					string teacher = $"{dialog.FIO[0]} {dialog.FIO[1]} {dialog.FIO[2]}";
-					Subject temp = new Subject(dialog.SubjectNameString, teacher);
-					PullOfSublect.Add(temp);
+			if(Logined) {
+				using(AddLessonForm dialog = new AddLessonForm()) {
+					dialog.Owner = this;
+					if(dialog.ShowDialog() == DialogResult.OK) {
+						string teacher = $"{dialog.FIO[0]} {dialog.FIO[1].FirstCharToUpper()[0]}.{dialog.FIO[2].FirstCharToUpper()[0]}";
+						Subject temp = new Subject(dialog.SubjectNameString, teacher);
+						JsonDataBase.PullOfSublect.Add(temp);
+						Pull.DataSource = null;
+						Pull.Items.Add(temp);
+						Pull.DataSource = JsonDataBase.PullOfSublect.ToList();
+						if(!JsonDataBase.Teachers.ContainsKey(temp.Teacher)) {
+							JsonDataBase.Teachers.Add(temp.Teacher, new string[] { temp.LessonName });
+						}
+						else if(JsonDataBase.Teachers.ContainsKey(temp.Teacher) && !JsonDataBase.Teachers[temp.Teacher].Contains(temp.LessonName)) {
+							JsonDataBase.Teachers[temp.Teacher].Append(temp.LessonName);
+						}
+					}
 				}
+			}
+			else {
+				MessageBox.Show("Только авторизованные пользователи имеют право добавлять предметы", "Ошибка доступа", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
 		}
 
-		private void LoadTemplate() {
-			ExcelFile workbook = ExcelFile.Load(pathToTable);
 
-			DataGridViewConverter.ExportToDataGridView(workbook.Worksheets.ActiveWorksheet, dataGridView1, new ExportToDataGridViewOptions() { ColumnHeaders = true });
-		}
-
-		private void SaveTemplate() {
-			ExcelFile workbook = new ExcelFile();
-			ExcelWorksheet worksheet = workbook.Worksheets.Add("Sheet1");
-
-			DataGridViewConverter.ImportFromDataGridView(worksheet, dataGridView1, new ImportFromDataGridViewOptions() { ColumnHeaders = true });
-
-			workbook.Save(pathToTable);
-		}
 
 		private void dataGridView1_DragDrop(object sender, DragEventArgs e) {
-			Point clientPoint = dataGridView1.PointToClient(new Point(e.X, e.Y));
-			var hit = dataGridView1.HitTest(clientPoint.X, clientPoint.Y);
+			if(Logined) {
+				var dgv = (DataGridView)Tables.SelectedTab.Controls[0];
+				Point clientPoint = dgv.PointToClient(new Point(e.X, e.Y));
+				var hit = dgv.HitTest(clientPoint.X, clientPoint.Y);
 
-			if((hit.ColumnIndex > -1) && (hit.RowIndex > -1)) {
-				dataGridView1.CurrentCell = dataGridView1[hit.ColumnIndex, hit.RowIndex];
-				dataGridView1.CurrentCell.Value = new Lesson(e.Data.GetData(DataFormats.Serializable, true) as Subject,
-												 Week[dataGridView1[0, hit.RowIndex].Value.ToString()][Convert.ToInt32(dataGridView1[1, hit.RowIndex].Value)].Item1,
-												 Week[dataGridView1[0, hit.RowIndex].Value.ToString()][Convert.ToInt32(dataGridView1[1, hit.RowIndex].Value)].Item2,
-												 dataGridView1[hit.ColumnIndex, 0].Value.ToString(),
-												 Convert.ToInt32(dataGridView1.Columns[hit.ColumnIndex].HeaderText));
+				if((hit.ColumnIndex > -1) && (hit.RowIndex > -1)) {
+					DialogResult var = DialogResult.Yes;
+					Subject item = e.Data.GetData(DataFormats.Serializable, true) as Subject;
+					for(int g = 0; g < 4; g++) {
+						var DVG = (DataGridView)Tables.TabPages[g].Controls[0];
+						for(int i = 2; i < DVG.ColumnCount; i++) {
+							if((DVG[i, hit.RowIndex].Value != null) && (item.Teacher == ((Subject)DVG[i, hit.RowIndex].Value).Teacher)) {
+								var = MessageBox.Show($"{item.Teacher} уже ведет {((Subject)DVG[i, hit.RowIndex].Value).LessonName} у {DVG.Columns[i].HeaderText} - {DVG[i, 0].Value} в это время.\n Продолжить в любом случае?", "Ошибка составления расписания", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+								if(var == DialogResult.No) {
+									break;
+								}
+							}
+						}
+					}
+
+					try {
+						if(var == DialogResult.Yes) {
+							dgv.CurrentCell = dgv[hit.ColumnIndex, hit.RowIndex];
+							dgv.CurrentCell.Value = new Lesson(item,
+															JsonDataBase.Week[dgv[0, hit.RowIndex].Value.ToString()][Convert.ToInt32(dgv[1, hit.RowIndex].Value)].Item1,
+															JsonDataBase.Week[dgv[0, hit.RowIndex].Value.ToString()][Convert.ToInt32(dgv[1, hit.RowIndex].Value)].Item2,
+															 dgv[hit.ColumnIndex, 0].Value.ToString(),
+															 Convert.ToInt32(dgv.Columns[hit.ColumnIndex].HeaderText));
+						}
+					}
+					catch(Exception A) {
+						Console.WriteLine(A.Message);
+					}
+				}
+			}
+			else {
+				MessageBox.Show("Только авторизованные пользователи имеют право добавлять пары", "Ошибка доступа", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
 		}
 
 		private void Pull_MouseDown(object sender, MouseEventArgs e) {
-			Pull.DoDragDrop(Pull.SelectedItem, DragDropEffects.Scroll | DragDropEffects.Move | DragDropEffects.Copy);
+			if(Logined)
+				Pull.DoDragDrop(Pull.SelectedItem, DragDropEffects.Scroll | DragDropEffects.Move | DragDropEffects.Copy);
+
 		}
 
 		private void dataGridView1_DragEnter(object sender, DragEventArgs e) {
-			if(e.Data.GetDataPresent(DataFormats.Serializable)) {
-				e.Effect = DragDropEffects.Move | DragDropEffects.Copy | DragDropEffects.Scroll;
+			if(Logined)
+				if(e.Data.GetDataPresent(DataFormats.Serializable)) {
+					e.Effect = DragDropEffects.Move | DragDropEffects.Copy | DragDropEffects.Scroll;
+				}
+				else {
+					e.Effect = DragDropEffects.None;
+				}
+		}
+
+		private void Open_Click(object sender, EventArgs e) {
+			openFileDialog1.Filter = "XLS files (*.xls, *.xlt)|*.xls;*.xlt|XLSX files (*.xlsx, *.xlsm, *.xltx, *.xltm)|*.xlsx;*.xlsm;*.xltx;*.xltm|ODS files (*.ods, *.ots)|*.ods;*.ots|CSV files (*.csv, *.tsv)|*.csv;*.tsv|HTML files (*.html, *.htm)|*.html;*.htm";
+			openFileDialog1.FilterIndex = 2;
+
+			if(openFileDialog1.ShowDialog() == DialogResult.OK) {
+				TabPage temp = new TabPage(openFileDialog1.FileName);
+				Tables.TabPages.Add(temp);
+				DataGridView dvg = new DataGridView() { Dock = DockStyle.Fill };
+				temp.Controls.Add(dvg);
+				JsonDataBase.LoadTemplate(ref dvg, openFileDialog1.FileName);
 			}
-			else {
-				e.Effect = DragDropEffects.None;
+		}
+
+		private void открытьToolStripMenuItem_Click(object sender, EventArgs e) => Open_Click(sender, e);
+
+		private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e) {
+			for(int i = 0; i < 4; i++) {
+				var item = (DataGridView)Tables.TabPages[i].Controls[0];
+				JsonDataBase.SaveTemplate(ref item, $@"..\Template{i}.xlsx");
+			}
+			for(int i = 4; i < Tables.TabPages.Count; i++) {
+				var item = (DataGridView)Tables.TabPages[i].Controls[0];
+				JsonDataBase.SaveTemplate(ref item, Tables.TabPages[i].Text);
+			}
+
+			JsonDataBase.Save();
+		}
+
+		private void сохранитьКакToolStripMenuItem_Click(object sender, EventArgs e) {
+			JsonDataBase.Save();
+			saveFileDialog1.Filter = "XLS files (*.xls, *.xlt)|*.xls;*.xlt|XLSX files (*.xlsx, *.xlsm, *.xltx, *.xltm)|*.xlsx;*.xlsm;*.xltx;*.xltm|ODS files (*.ods, *.ots)|*.ods;*.ots|CSV files (*.csv, *.tsv)|*.csv;*.tsv|HTML files (*.html, *.htm)|*.html;*.htm";
+			saveFileDialog1.FilterIndex = 2;
+
+			if(saveFileDialog1.ShowDialog() == DialogResult.OK) {
+				var item = (DataGridView)Tables.SelectedTab.Controls[0];
+				JsonDataBase.SaveTemplate(ref item, saveFileDialog1.FileName);
+			}
+		}
+
+		private void создатьToolStripMenuItem_Click(object sender, EventArgs e) {
+			TabPage temp = new TabPage($"New Table {Tables.TabPages.Count + 1}");
+			Tables.TabPages.Add(temp);
+			DataGridView dvg = new DataGridView() { Dock = DockStyle.Fill };
+			temp.Controls.Add(dvg);
+			JsonDataBase.LoadTemplate(ref dvg);
+		}
+
+		private void Pull_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e) {
+			Console.WriteLine(e.KeyCode);
+			if(Logined && (e.KeyCode == Keys.Delete)) {
+				Pull.DataSource = null;
+				JsonDataBase.PullOfSublect.Remove((Subject)Pull.SelectedItem);
+				Pull.Items.Remove(Pull.SelectedItem);
+				Pull.DataSource = JsonDataBase.PullOfSublect.ToList();
 			}
 		}
 	}
+
+
+	public static class StringExtensions {
+		public static string FirstCharToUpper(this string input) {
+			switch(input) {
+				case null:
+					throw new ArgumentNullException(nameof(input));
+				case "":
+					throw new ArgumentException($"{nameof(input)} cannot be empty", nameof(input));
+				default:
+					return input.First().ToString().ToUpper() + input.Substring(1);
+			}
+		}
+	}
+
+
 }
