@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
+using System.Windows.Forms;
 
 namespace TimeTable
 {
@@ -24,12 +15,14 @@ namespace TimeTable
         private void textBox1_TextChanged(object sender, EventArgs e) => (button1.Enabled, label2.Text) = new Regex(@"\W\s*").IsMatch(textBox1.Text) ? (false, "Пароль содержит недопустимые символы") : (true, "");
 
         private void button1_Click(object sender, EventArgs e)
-        { 
-            if(!JsonDataBase.Passwords.ContainsKey(textBox1.Text)) {
+        {
+            if (!JsonDataBase.Passwords.ContainsKey(textBox1.Text))
+            {
                 DialogResult = DialogResult.None;
                 MessageBox.Show("Неверный пароль");
             }
-            else {
+            else
+            {
                 DialogResult = DialogResult.OK;
                 MessageBox.Show($"Добро пожаловть, {JsonDataBase.Passwords[textBox1.Text]}");
             }

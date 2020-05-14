@@ -1,8 +1,9 @@
-﻿using System;
+﻿using GemBox.Spreadsheet;
+using System;
 using System.Windows.Forms;
-using GemBox.Spreadsheet;
 
-namespace TimeTable {
+namespace TimeTable
+{
     static class Program
     {
         /// <summary>
