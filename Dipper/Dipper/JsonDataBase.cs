@@ -18,7 +18,9 @@ namespace TimeTable
         private static string pathToDayWeek = @"..\daysweek.json";
         private static string pathToCourses = @"..\courses.json";
         private static string pathToGroups = @"..\groups.json";
+#pragma warning disable CS0414 // Полю "JsonDataBase.pathToTable" присвоено значение, но оно ни разу не использовано.
         private static string pathToTable = @"..\Template.xlsx";
+#pragma warning restore CS0414 // Полю "JsonDataBase.pathToTable" присвоено значение, но оно ни разу не использовано.
 
         public static HashSet<Subject> PullOfSublect { get; set; } = JsonConvert.DeserializeObject<HashSet<Subject>>(File.ReadAllText(pathToSubjects));
         public static Dictionary<string, string[]> Teachers { get; set; } = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(File.ReadAllText(pathToTeachers));

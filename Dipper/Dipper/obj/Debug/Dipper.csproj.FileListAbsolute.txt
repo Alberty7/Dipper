@@ -18,3 +18,7 @@ D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\GemBox.Spreadsheet.WinForm
 D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\Newtonsoft.Json.xml
 D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.csprojAssemblyReference.cache
 D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Dipper.csproj.CopyComplete
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\Diplom.exe.manifest
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\bin\Debug\Diplom.application
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Diplom.exe.manifest
+D:\Git Projects\Dipper\Dipper\Dipper\Dipper\obj\Debug\Diplom.application
