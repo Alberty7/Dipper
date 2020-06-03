@@ -17,7 +17,7 @@ namespace TimeTable
 			{
 				TabPage temp = new TabPage($"Курс {i}.xlsx");
 				Tables.TabPages.Add(temp);
-				DataGridView dvg = new DataGridView() { Dock = DockStyle.Fill };
+				DataGridView dvg = new DataGridView() { Dock = DockStyle.Fill, AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill };
 				dvg.AllowDrop = true;
 				dvg.DragDrop += new DragEventHandler(this.dataGridView1_DragDrop);
 				dvg.DragEnter += new DragEventHandler(this.dataGridView1_DragEnter);
