@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Lesson.cs = Lesson.cs
 	EndProjectSection
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupDipper", "SetupDipper\SetupDipper.vdproj", "{3E1D1BEB-D1EA-416B-9179-318B2B28A8BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,8 @@ Global
 		{D0E73F9B-6B14-4619-BEBA-27930B2F26FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0E73F9B-6B14-4619-BEBA-27930B2F26FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0E73F9B-6B14-4619-BEBA-27930B2F26FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E1D1BEB-D1EA-416B-9179-318B2B28A8BD}.Debug|Any CPU.ActiveCfg = Debug
+		{3E1D1BEB-D1EA-416B-9179-318B2B28A8BD}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

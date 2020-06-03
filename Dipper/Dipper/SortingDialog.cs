@@ -93,12 +93,14 @@ namespace TimeTable
                 }
                 if (isTeacherSorting.Checked && Teacher.Enabled)
                 {
-                    filter.tch.AddRange(Teacher.SelectedItems.Cast<string>());
+					filter.tch.AddRange(Teacher.SelectedItems.Cast<string>());
                 }
 
-                var item = (DataGridView)main.Tables.SelectedTab.Controls[0];
-
-                JsonDataBase.Sort(filter, ref item);
+                for(int i = 0; i < 4; i++) {
+                    var item = (DataGridView)main.Tables.TabPages[i].Controls[0];
+                    SortingArgs clone = (SortingArgs)filter.Clone();
+					JsonDataBase.Sort(clone, ref item);
+                }
                 DialogResult = DialogResult.OK;
             }
             else
@@ -130,7 +132,7 @@ namespace TimeTable
             Teacher.DataSource = JsonDataBase.Teachers.Keys.ToList();
         }
     }
-    class SortingArgs
+    class SortingArgs : ICloneable
     {
         public SortingFilters args = SortingFilters.All;
 
@@ -140,5 +142,9 @@ namespace TimeTable
         public (DateTime, DateTime) time;
         public List<Subject> sbj = new List<Subject>();
         public List<string> tch = new List<string>();
-    }
+
+		public object Clone() {
+            return new SortingArgs { args = this.args, crs = this.crs, day = this.day, grp = this.grp, sbj = this.sbj, tch = this.tch, time = this.time };
+		}
+	}
 }

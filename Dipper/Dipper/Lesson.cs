@@ -28,7 +28,7 @@ public class Subject : IComparable, ISerializable
     public int CompareTo(object obj)
     {
         if (obj is Subject other)
-            return LessonName.CompareTo(other.LessonName) + Teacher.CompareTo(other.Teacher);
+            return LessonName.CompareTo(other.LessonName) ^ Teacher.CompareTo(other.Teacher);
         else
             throw new Exception("Несравнимые объекты");
     }
@@ -75,5 +75,5 @@ public class Lesson : Subject
         }
     }
 
-    public override string ToString() => $"{LessonName}\t{Teacher}";
+    public override string ToString() => $"{LessonName} — {Teacher}";
 }
