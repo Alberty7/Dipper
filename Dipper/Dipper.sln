@@ -6,11 +6,8 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dipper", "Dipper\Dipper.csproj", "{D0E73F9B-6B14-4619-BEBA-27930B2F26FB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9AEAFA23-40B3-4D18-B51D-420DDA4FF1AF}"
-	ProjectSection(SolutionItems) = preProject
-		Lesson.cs = Lesson.cs
-	EndProjectSection
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupDipper", "SetupDipper\SetupDipper.vdproj", "{3E1D1BEB-D1EA-416B-9179-318B2B28A8BD}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupDipper", "..\SetupDipper\SetupDipper.vdproj", "{8B9691FD-4902-4EA1-99D6-2FDB005980BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,8 +19,8 @@ Global
 		{D0E73F9B-6B14-4619-BEBA-27930B2F26FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0E73F9B-6B14-4619-BEBA-27930B2F26FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0E73F9B-6B14-4619-BEBA-27930B2F26FB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E1D1BEB-D1EA-416B-9179-318B2B28A8BD}.Debug|Any CPU.ActiveCfg = Debug
-		{3E1D1BEB-D1EA-416B-9179-318B2B28A8BD}.Release|Any CPU.ActiveCfg = Release
+		{8B9691FD-4902-4EA1-99D6-2FDB005980BB}.Debug|Any CPU.ActiveCfg = Debug
+		{8B9691FD-4902-4EA1-99D6-2FDB005980BB}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
